@@ -11,13 +11,3 @@ tokens = Camp3.update_access_token!
 
 # Prints the new access token
 puts tokens.access_token
-
-projects = Camp3.projects
-
-projects.each do |p|
-  puts "Project: #{p.name}"
-
-  p.dock.each do |component|
-    puts "Component: #{component.name}"
-  end
-end
