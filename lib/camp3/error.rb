@@ -2,8 +2,11 @@
 
 module Camp3
   module Error
-    # Custom error class for rescuing from all Gitlab errors.
+    # Custom error class for rescuing from all Camp3 errors.
     class Error < StandardError; end
+
+    # Raised when there is a configuration error
+    class InvalidConfiguration < Error; end
 
     # Raised when API endpoint credentials not configured.
     class MissingCredentials < Error; end
@@ -63,7 +66,7 @@ module Camp3
         else
           @response.parsed_response
         end
-      rescue Gitlab::Error::Parsing
+      rescue Camp3::Error::Parsing
         # Return stringified response when receiving a
         # parsing error to avoid obfuscation of the
         # api error.

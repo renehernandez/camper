@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Camp3
-  class Message
+class Camp3::Client
+  module Todo
   end
 end

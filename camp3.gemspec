@@ -26,7 +26,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency 'rack-oauth2', '~> 1.14'
-  spec.add_dependency 'activeresource', '~> 5.1'
+  spec.add_dependency 'httparty', '~> 0.18'
 
   spec.add_development_dependency "rspec", "~> 3.9"
 end

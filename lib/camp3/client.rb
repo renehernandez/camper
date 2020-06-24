@@ -2,22 +2,26 @@
 
 module Camp3
   # Wrapper for the Gitlab REST API.
-  class Client
-    # Dir[File.expand_path('resources/*.rb', __dir__)].each { |f| require f }
+  class Client < Request
+    Dir[File.expand_path('resources/*.rb', __dir__)].each { |f| require f }
     
     # Keep in alphabetical order
     include Authorization
+    include Project
 
     # @private
-    # attr_accessor(*Configuration::VALID_OPTIONS_KEYS)
+    attr_accessor(*Configuration::VALID_OPTIONS_KEYS)
 
     # Creates a new API.
     # @raise [Error:MissingCredentials]
     def initialize(options = {})
       options = Camp3.options.merge(options)
+      
       (Configuration::VALID_OPTIONS_KEYS).each do |key|
         send("#{key}=", options[key]) if options[key]
       end
+
+      self.class.headers 'User-Agent' => user_agent
     end
 
     # Text representation of the client, masking private token.

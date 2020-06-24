@@ -6,6 +6,7 @@ RSpec.describe Camp3::Configuration do
         config.client_id = 'client_id'
         config.client_secret = 'client_secret'
         config.redirect_uri = 'redirect_uri'
+        config.account_number = '000000'
         config.refresh_token = 'refresh_token'
         config.access_token = 'access_token'
         config.user_agent = 'user_agent'
@@ -34,6 +35,22 @@ RSpec.describe Camp3::Configuration do
 
     it "sets user_agent" do
       expect(Camp3.user_agent).to eq('user_agent')
+    end
+
+    it "sets the account number" do
+      expect(Camp3.account_number).to eq('000000')
+    end
+
+    it 'sets the fixed authz endpoint' do 
+      expect(Camp3.authz_endpoint).to eq('https://launchpad.37signals.com/authorization/new')
+    end
+
+    it 'sets the fixed token endpoint' do 
+      expect(Camp3.token_endpoint).to eq('https://launchpad.37signals.com/authorization/token')
+    end
+
+    it 'sets the fixed api endpoint' do 
+      expect(Camp3.api_endpoint).to eq('https://3.basecampapi.com/000000')
     end
   end
 end
