@@ -3,11 +3,13 @@
 module Camp3
   # Wrapper for the Gitlab REST API.
   class Client < Request
-    Dir[File.expand_path('resources/*.rb', __dir__)].each { |f| require f }
+    Dir[File.expand_path('api/*.rb', __dir__)].each { |f| require f }
     
     # Keep in alphabetical order
     include Authorization
-    include Project
+    include ProjectAPI
+    include MessageAPI
+    include TodoAPI
 
     # @private
     attr_accessor(*Configuration::VALID_OPTIONS_KEYS)

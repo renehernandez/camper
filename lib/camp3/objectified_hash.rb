@@ -35,7 +35,7 @@ module Camp3
     end
 
     def objectify_value(input)  
-      return self.class.new(input) if input.is_a? Hash
+      return ObjectifiedHash.new(input) if input.is_a? Hash
 
       return input unless input.is_a? Array
 

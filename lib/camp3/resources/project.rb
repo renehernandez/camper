@@ -1,20 +1,14 @@
-# frozen_string_literal: true
+module Camp3
+  class Project < Resource
 
-class Camp3::Client
-  module Project
+    attr_reader :message_board, :todoset, :schedule
 
-    def projects(options = {})
-      get("/projects", options)
-    end
+    def initialize(hash)
+      super
 
-    def message_board(project)
-      board = project.dock.find { |payload| payload.name == 'message_board' }
-      get(board.url, override_path: true)
-    end
-
-    def todoset(project)
-      todoset = project.dock.find { |payload| payload.name == 'todoset' }
-      get(todoset.url, override_path: true)
+      @message_board = dock.find { |payload| payload.name == 'message_board' }
+      @todoset = dock.find { |payload| payload.name == 'todoset' }
+      @schedule = dock.find { |payload| payload.name == 'schedule' }
     end
   end
 end

@@ -13,13 +13,12 @@ module Camp3
 
     # Converts the response body to an ObjectifiedHash.
     def self.parse(body)
-      Camp3.logger.debug "Parsing body: #{body.class}"
       body = decode(body)
 
       if body.is_a? Hash
-        ObjectifiedHash.new body
+        Resource.create(body)
       elsif body.is_a? Array
-        PaginatedResponse.new(body.collect! { |e| ObjectifiedHash.new(e) })
+        PaginatedResponse.new(body.collect! { |e| Resource.create(e) })
       elsif body
         true
       elsif !body

@@ -13,7 +13,12 @@ projects = Camp3.projects
 projects.each do |p|
   puts "Project: #{p.name}"
 
-  p.dock.each do |component|
-    puts "Component: #{component.name}"
+  message_board = Camp3.message_board(p)
+  puts "Message Board: #{message_board.title}"
+
+  messages = Camp3.messages(message_board)
+
+  messages.each do |msg|
+    puts msg.inspect
   end
 end

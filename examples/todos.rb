@@ -11,11 +11,19 @@ end
 projects = Camp3.projects
 
 projects.each do |p|
-  puts "Project: #{p.name}"
+  puts "Project: #{p.inspect}"
+
+  puts "Todo set: #{p.todoset.inspect}"
 
   todoset = Camp3.todoset(p)
-  puts "Todoset: #{todoset.name}"
 
-  message_board = Camp3.message_board(p)
-  puts "Message Board: #{message_board.title}"
+  Camp3.todolists(todoset).each do |list|
+    puts "Todolist: #{list.title}"
+
+    puts "Todos: #{Camp3.todos(list)}"
+
+    # Camp3.todos(list).each do |todo|
+    #   puts todo.inspect
+    # end
+  end
 end

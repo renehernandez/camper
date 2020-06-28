@@ -62,7 +62,11 @@ module Camp3
     def api_endpoint
       raise Camp3::Error::InvalidConfiguration, "missing basecamp account" unless self.account_number
       
-      "https://3.basecampapi.com/#{self.account_number}"
+      "#{self.base_api_endpoint}/#{self.account_number}"
+    end
+
+    def base_api_endpoint
+      "https://3.basecampapi.com"
     end
   end
 end
