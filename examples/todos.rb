@@ -20,10 +20,8 @@ projects.each do |p|
   Camp3.todolists(todoset).each do |list|
     puts "Todolist: #{list.title}"
 
-    puts "Todos: #{Camp3.todos(list)}"
-
-    # Camp3.todos(list).each do |todo|
-    #   puts todo.inspect
-    # end
+    Camp3.todos(list).each do |todo|
+      puts todo.inspect
+    end
   end
 end
