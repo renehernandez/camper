@@ -1,0 +1,38 @@
+inherit_from: .rubocop_todo.yml
+
+require: rubocop-performance
+
+AllCops:
+  TargetRubyVersion: 2.5
+  NewCops: enable
+
+Layout/LineLength:
+  Max: 123
+  Exclude:
+    - 'lib/camp3/client/*'
+    - 'spec/**/*'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
+Style/Documentation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - 'lib/camp3/*'
+    - 'lib/camp3/api/*'
+    - 'lib/camp3/resources/*'
+
+Lint/NonDeterministicRequireOrder:
+  Enabled: false
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
