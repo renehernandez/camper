@@ -1,4 +1,4 @@
-# camp3 ![CI](https://github.com/renehernandez/camp3/workflows/CI/badge.svg)
+# camp3 ![CI](https://github.com/renehernandez/camp3/workflows/CI/badge.svg) [![Gem Version](https://badge.fury.io/rb/camp3.svg)](https://badge.fury.io/rb/camp3)
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/camp3`. To experiment with that code, run `bin/console` for an interactive prompt.
 
