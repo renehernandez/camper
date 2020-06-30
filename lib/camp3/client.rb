@@ -7,8 +7,9 @@ module Camp3
     
     # Keep in alphabetical order
     include Authorization
-    include ProjectAPI
     include MessageAPI
+    include ProjectAPI
+    include ResourceAPI
     include TodoAPI
 
     # @private
