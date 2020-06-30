@@ -4,7 +4,7 @@ class Camp3::Client
   module ResourceAPI
     
     def resource(url)
-      get(url, override_path: true)
+      get(url_transform(url), override_path: true)
     end
 
   end
