@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Camp3
-  # Wrapper for the Gitlab REST API.
+  # Wrapper for the Camp3 REST API.
   class Client < Request
     Dir[File.expand_path('api/*.rb', __dir__)].each { |f| require f }
     

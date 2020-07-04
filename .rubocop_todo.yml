@@ -104,7 +104,6 @@ Layout/TrailingWhitespace:
     - 'lib/camp3/authorization.rb'
     - 'lib/camp3/client.rb'
     - 'lib/camp3/configuration.rb'
-    - 'lib/camp3/objectified_hash.rb'
     - 'lib/camp3/resource.rb'
     - 'spec/configuration_spec.rb'
 

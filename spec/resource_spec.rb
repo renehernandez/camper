@@ -13,7 +13,7 @@ RSpec.describe Camp3::Resource do
     expect(@resource.b).to eq(@hash[:b])
   end
 
-  it 'objectifies a hash contained in an array' do
+  it 'resourcifies hashes contained in an array' do
     expect(@resource.array[1].a).to eq(@hash[:array][1][:a])
     expect(@resource.array[1].b).to eq(@hash[:array][1][:b])
     expect(@resource.array[0]).to eq(@hash[:array][0])
