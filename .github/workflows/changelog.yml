@@ -1,0 +1,19 @@
+name: Changelog
+
+on:
+  push:
+    branches: [ master ]
+    tags:
+      - v*
+
+jobs:
+  build:
+    name: Update Changelog
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Update Changelog
+        uses: heinrichreimer/github-changelog-generator-action@v2.1.1
+        with:
+          token: ${{ secrets.CHANGELOG_TOKEN }}
