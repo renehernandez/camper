@@ -79,7 +79,7 @@ module Camp3
       # Handle error response message in case of nested hashes
       def handle_message(message)
         case message
-        when Camp3::ObjectifiedHash
+        when Camp3::Resource
           message.to_h.sort.map do |key, val|
             "'#{key}' #{(val.is_a?(Hash) ? val.sort.map { |k, v| "(#{k}: #{v.join(' ')})" } : [val].flatten).join(' ')}"
           end.join(', ')

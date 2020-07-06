@@ -11,7 +11,7 @@ module Camp3
 
     attr_accessor :access_token
 
-    # Converts the response body to an ObjectifiedHash.
+    # Converts the response body to a Resource.
     def self.parse(body)
       body = decode(body)
 
