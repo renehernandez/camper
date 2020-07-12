@@ -30,7 +30,7 @@ jobs:
   changelog:
     name: Update Changelog
     runs-on: ubuntu-latest
-    if: github.ref == master
+    if: github.ref == 'refs/heads/master'
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
