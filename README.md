@@ -74,6 +74,10 @@ end
 
 For more examples, check the [examples](examples/) folder
 
+## Contributing
+
+Check out the [Contributing](CONTRIBUTING.md) page
+
 ## License
 
 Checkout the [LICENSE](LICENSE) for details
