@@ -72,6 +72,8 @@ projects.each do |p|
 end
 ```
 
+For more examples, check the [examples](examples/) folder
+
 ## License
 
 Checkout the [LICENSE](LICENSE) for details
