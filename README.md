@@ -1,8 +1,6 @@
 # camp3 ![CI](https://github.com/renehernandez/camp3/workflows/CI/badge.svg) [![Gem Version](https://badge.fury.io/rb/camp3.svg)](https://badge.fury.io/rb/camp3)
 
-Camp3 is a Ruby wrapper for the [Basecamp 3 API](https://github.com/basecamp/bc3-api)
-
-TODO: Delete this and the text above, and describe your gem
+Camp3 is a Ruby wrapper for the [Basecamp 3 API](https://github.com/basecamp/bc3-api).
 
 ## Installation
 
@@ -76,7 +74,11 @@ For more examples, check the [examples](examples/) folder
 
 ## Contributing
 
-Check out the [Contributing](CONTRIBUTING.md) page
+Check out the [Contributing](CONTRIBUTING.md) page.
+
+## Appreciation
+
+The gem code structure and documentation is based on the awesome [NARKOZ/gitlab gem](https://github.com/narkoz/gitlab)
 
 ## License
 
