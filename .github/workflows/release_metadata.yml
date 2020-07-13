@@ -10,6 +10,12 @@ jobs:
     name: Update Changelog
     runs-on: ubuntu-latest
     steps:
+      - name: Get version from tag
+        env:
+          GITHUB_REF: ${{ github.ref }}
+        run: |
+          export CURRENT_VERSION=${GITHUB_TAG/refs\/tags\/v/}
+          echo "::set-env name=CURRENT_VERSION::$CURRENT_VERSION"
       - name: Checkout code
         uses: actions/checkout@v2
         with:
@@ -18,10 +24,14 @@ jobs:
         uses: heinrichreimer/github-changelog-generator-action@v2.1.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          issues: true
+          issuesWoLabels: true
+          pullRequests: true
+          prWoLabels: true
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           # Required
-          commit_message: Update Changelog
+          commit_message: Update Changelog for tag ${{ env.CURRENT_VERSION }}
           file_pattern: CHANGELOG.md
 
   release_notes:
