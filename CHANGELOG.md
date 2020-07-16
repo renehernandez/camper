@@ -1,5 +1,13 @@
 # Changelog
 
+## [true](https://github.com/renehernandez/camp3/tree/HEAD)
+
+**Documentation:**
+
+- Initial documentation [\#5](https://github.com/renehernandez/camp3/issues/5)
+- Add section to categorize documentation changes [\#14](https://github.com/renehernandez/camp3/pull/14)
+- Docs [\#10](https://github.com/renehernandez/camp3/pull/10)
+
 ## [v0.0.2](https://github.com/renehernandez/camp3/tree/v0.0.2) (2020-07-07)
 
 **Implemented enhancements:**
