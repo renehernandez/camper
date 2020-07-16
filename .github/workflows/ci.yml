@@ -27,8 +27,9 @@ jobs:
         gem install bundler --no-document
         bundle install --jobs 4 --retry 3
         bundle exec rake
-  changelog:
-    name: Update Changelog
+
+  changelog_prerelease:
+    name: Update Changelog For Prerelease
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
     steps:
@@ -44,7 +45,9 @@ jobs:
           issuesWoLabels: true
           pullRequests: true
           prWoLabels: true
+          unreleased: true
           unreleasedLabel: true
+          addSections: '{"documentation":{"prefix":"**Documentation:**","labels":["documentation"]}}'
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Update Changelog for PR
