@@ -46,7 +46,6 @@ jobs:
           pullRequests: true
           prWoLabels: true
           unreleased: true
-          unreleasedLabel: true
           addSections: '{"documentation":{"prefix":"**Documentation:**","labels":["documentation"]}}'
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
