@@ -1,6 +1,10 @@
 # Changelog
 
-## [true](https://github.com/renehernandez/camp3/tree/HEAD)
+## [Unreleased](https://github.com/renehernandez/camp3/tree/HEAD)
+
+**Fixed bugs:**
+
+- Remove unreleasedLabel field [\#15](https://github.com/renehernandez/camp3/pull/15)
 
 **Documentation:**
 
