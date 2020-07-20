@@ -17,30 +17,6 @@ module Camp3
   extend Logging
   extend Configuration
 
-  # def self.authorize!(auth_code)
-  #   tokens = client.authorize!(auth_code)
-
-  #   Resource.configure(Camp3.access_token)
-
-  #   tokens
-  # end
-
-  # def self.update_access_token!(refresh_token = nil)
-  #   refresh_token = Camp3.refresh_token unless refresh_token
-    
-  #   tokens = client.update_access_token!(refresh_token)
-
-  #   Resource.configure(Camp3.access_token)
-
-  #   tokens
-  # end
-
-  # def self.configure
-  #   yield self
-
-  #   Resource.configure(Camp3.access_token) if Camp3.access_token
-  # end
-
   # Alias for Camp3::Client.new
   #
   # @return [Camp3::Client]

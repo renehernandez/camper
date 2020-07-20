@@ -11,6 +11,18 @@ module Camp3
 
     attr_accessor :access_token
 
+    module Result
+      AccessTokenExpired = 'AccessTokenExpired'
+
+      Valid = 'Valid'
+    end
+
+    def initialize(access_token, user_agent)
+      @access_token = access_token
+
+      self.class.headers 'User-Agent' => user_agent
+    end
+
     # Converts the response body to a Resource.
     def self.parse(body)
       body = decode(body)
@@ -39,31 +51,56 @@ module Camp3
 
     %w[get post put delete].each do |method|
       define_method method do |path, options = {}|
-        override_path = options.delete(:override_path)
         params = options.dup
-
+        override_path = params.delete(:override_path)
+        
         params[:headers] ||= {}
-        params[:headers].merge!(authorization_header)
 
         full_endpoint = override_path ? path : Camp3.api_endpoint + path
 
-        validate self.class.send(method, full_endpoint, params)
+        execute_request(method, full_endpoint, params)
       end
     end
 
-    # Checks the response code for common errors.
-    # Returns parsed response for successful requests.
-    def validate(response)
-      error_klass = Error::STATUS_MAPPINGS[response.code]
-      raise error_klass, response if error_klass
+    private
 
-      parsed = self.class.parse(response)
-      parsed.client = self if parsed.respond_to?(:client=)
-      parsed.parse_headers!(response.headers) if parsed.respond_to?(:parse_headers!)
-      parsed
+    # Executes the request
+    def execute_request(method, endpoint, params)
+      params[:headers].merge!(authorization_header)
+      
+      Camp3.logger.debug("Method: #{method}; URL: #{endpoint}; Params: #{params}")
+      response, result = validate self.class.send(method, endpoint, params)
+
+      response = parse(response) if result == Result::Valid
+
+      return response, result
     end
 
-    private
+    # Checks the response code for common errors.
+    # Informs that a retry needs to happen if request failed due to access token expiration
+    # @raise [Error::ResponseError] if response is an HTTP error
+    # @return [Response, Request::Result]
+    def validate(response)
+      error_klass = Error::STATUS_MAPPINGS[response.code]
+
+      if error_klass == Error::Unauthorized && response.parsed_response.include?("OAuth token expired (old age)")
+        Camp3.logger.debug("Access token expired. Please obtain a new access token")
+        return response, Result::AccessTokenExpired
+      end
+
+      raise error_klass, response if error_klass
+
+      return response, Result::Valid
+    end
+
+    def parse(response)
+      parsed = self.class.parse(response)
+      
+      parsed.client = self if parsed.respond_to?(:client=)
+      parsed.parse_headers!(response.headers) if parsed.respond_to?(:parse_headers!)
+
+      parsed
+    end
 
     # Returns an Authorization header hash
     #

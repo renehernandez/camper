@@ -8,15 +8,19 @@ Camp3.configure do |config|
   config.access_token = ENV['BASECAMP3_ACCESS_TOKEN']
 end
 
-projects = Camp3.projects
+client = Camp3.client
+
+projects = client.projects
+
+puts projects
 
 projects.each do |p|
   puts "Project: #{p.name}"
 
-  message_board = Camp3.message_board(p)
+  message_board = client.message_board(p)
   puts "Message Board: #{message_board.title}"
 
-  messages = Camp3.messages(message_board)
+  messages = client.messages(message_board)
 
   messages.each do |msg|
     puts msg.inspect

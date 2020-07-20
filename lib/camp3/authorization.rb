@@ -59,8 +59,8 @@ module Camp3
     private
 
     def store_tokens(token)
-      Camp3.access_token = token.access_token
-      Camp3.refresh_token = token.refresh_token
+      @access_token = token.access_token
+      @refresh_token = token.refresh_token
     end
   end
 end

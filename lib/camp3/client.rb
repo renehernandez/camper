@@ -2,7 +2,7 @@
 
 module Camp3
   # Wrapper for the Camp3 REST API.
-  class Client < Request
+  class Client
     Dir[File.expand_path('api/*.rb', __dir__)].each { |f| require f }
     
     # Keep in alphabetical order
@@ -23,8 +23,18 @@ module Camp3
       (Configuration::VALID_OPTIONS_KEYS).each do |key|
         send("#{key}=", options[key]) if options[key]
       end
+    end
 
-      self.class.headers 'User-Agent' => user_agent
+    %w[get post put delete].each do |method|
+      define_method method do |path, options = {}|
+        response, result = new_request.send(method, path, options)
+        return response unless result == Request::Result::AccessTokenExpired
+
+        update_access_token!
+
+        response, _ = new_request.send(method, path, options)
+        response
+      end
     end
 
     # Text representation of the client, masking private token.
@@ -45,6 +55,10 @@ module Camp3
     end
 
     private
+
+    def new_request
+      Request.new(@access_token, @user_agent)
+    end
 
     def only_show_last_four_chars(token)
       "#{'*' * (token.size - 4)}#{token[-4..-1]}"
