@@ -10,8 +10,6 @@ end
 
 projects = Camp3.projects
 
-puts projects
-
 projects.each do |p|
   puts "Project: #{p.name}"
 
