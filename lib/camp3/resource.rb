@@ -63,7 +63,7 @@ module Camp3
 
     def self.detect_type(url)
       case url
-      when /#{Camp3.api_endpoint}\/projects\/\d+\.json/
+      when /#{Camp3.base_api_endpoint}\/\d+\/projects\/\d+\.json/
         return Project
       else
         return Resource

@@ -6,10 +6,9 @@ module Camp3
   # @private
   class Request
     include HTTParty
-    format :plain
+    format :json
     headers 'Accept' => 'application/json'
-
-    attr_accessor :access_token
+    parser(proc { |body, _| parse(body) })
 
     module Result
       AccessTokenExpired = 'AccessTokenExpired'
@@ -44,7 +43,7 @@ module Camp3
 
     # Decodes a JSON response into Ruby object.
     def self.decode(response)
-      response ? JSON.parse(response) : {}
+      response ? JSON.load(response) : {}
     rescue JSON::ParserError
       raise Error::Parsing, 'The response is not a valid JSON'
     end
@@ -68,10 +67,10 @@ module Camp3
     def execute_request(method, endpoint, params)
       params[:headers].merge!(authorization_header)
       
-      Camp3.logger.debug("Method: #{method}; URL: #{endpoint}; Params: #{params}")
+      Camp3.logger.debug("Method: #{method}; URL: #{endpoint}")
       response, result = validate self.class.send(method, endpoint, params)
 
-      response = parse(response) if result == Result::Valid
+      response = extract_parsed(response) if result == Result::Valid
 
       return response, result
     end
@@ -83,7 +82,7 @@ module Camp3
     def validate(response)
       error_klass = Error::STATUS_MAPPINGS[response.code]
 
-      if error_klass == Error::Unauthorized && response.parsed_response.include?("OAuth token expired (old age)")
+      if error_klass == Error::Unauthorized && response.parsed_response.error.include?("OAuth token expired (old age)")
         Camp3.logger.debug("Access token expired. Please obtain a new access token")
         return response, Result::AccessTokenExpired
       end
@@ -93,8 +92,8 @@ module Camp3
       return response, Result::Valid
     end
 
-    def parse(response)
-      parsed = self.class.parse(response)
+    def extract_parsed(response)
+      parsed = response.parsed_response
       
       parsed.client = self if parsed.respond_to?(:client=)
       parsed.parse_headers!(response.headers) if parsed.respond_to?(:parse_headers!)
@@ -106,7 +105,7 @@ module Camp3
     #
     # @raise [Error::MissingCredentials] if access_token and auth_token are not set.
     def authorization_header
-      raise Error::MissingCredentials, 'Please provide a access_token' unless @access_token
+      raise Error::MissingCredentials, 'Please provide a access_token' if @access_token.to_s.empty?
 
       { 'Authorization' => "Bearer #{@access_token}" }
     end
