@@ -2,6 +2,11 @@
 
 ## [Unreleased](https://github.com/renehernandez/camp3/tree/HEAD)
 
+**Implemented enhancements:**
+
+- Request a new access token once it expires [\#13](https://github.com/renehernandez/camp3/issues/13)
+- Retry for new access token [\#16](https://github.com/renehernandez/camp3/pull/16)
+
 **Fixed bugs:**
 
 - Remove unreleasedLabel field [\#15](https://github.com/renehernandez/camp3/pull/15)
