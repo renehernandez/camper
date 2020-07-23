@@ -62,9 +62,8 @@ module Camp3
     end
 
     def self.detect_type(url)
-      Camp3.logger.debug "Request URL: #{url}" 
       case url
-      when /#{Camp3.api_endpoint}\/projects\/\d+\.json/
+      when /#{Camp3.base_api_endpoint}\/\d+\/projects\/\d+\.json/
         return Project
       else
         return Resource
