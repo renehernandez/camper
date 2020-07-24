@@ -40,6 +40,8 @@ end
 
 For more complex examples, we recommend using a client, instead of the top level `Camp3` wrapper. A `client` has a builtin mechanism to retry requests when the access token has expired and update its information (so it will use the new access token instead of the old one), as oppose to the top level `Camp3` which would request a new access token every time a request were to be made.
 
+Example getting list of TODOs:
+
 ```ruby
 require 'camp3'
 
