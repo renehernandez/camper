@@ -14,6 +14,7 @@
 **Documentation:**
 
 - Initial documentation [\#5](https://github.com/renehernandez/camp3/issues/5)
+- Update docs for retry [\#17](https://github.com/renehernandez/camp3/pull/17)
 - Add section to categorize documentation changes [\#14](https://github.com/renehernandez/camp3/pull/14)
 - Docs [\#10](https://github.com/renehernandez/camp3/pull/10)
 
