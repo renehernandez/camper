@@ -8,19 +8,21 @@ Camp3.configure do |config|
   config.access_token = ENV['BASECAMP3_ACCESS_TOKEN']
 end
 
-projects = Camp3.projects
+client = Camp3.client
+
+projects = client.projects
 
 projects.each do |p|
   puts "Project: #{p.inspect}"
 
   puts "Todo set: #{p.todoset.inspect}"
 
-  todoset = Camp3.todoset(p)
+  todoset = client.todoset(p)
 
-  Camp3.todolists(todoset).each do |list|
+  client.todolists(todoset).each do |list|
     puts "Todolist: #{list.title}"
 
-    Camp3.todos(list).each do |todo|
+    client.todos(list).each do |todo|
       puts todo.inspect
     end
   end

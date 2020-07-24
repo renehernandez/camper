@@ -38,7 +38,9 @@ Camp3.configure do |config|
 end
 ```
 
-Example getting list of TODOs
+For more complex examples, we recommend using a client, instead of the top level `Camp3` wrapper. A `client` has a builtin mechanism to retry requests when the access token has expired and update its information (so it will use the new access token instead of the old one), as oppose to the top level `Camp3` which would request a new access token every time a request were to be made.
+
+Example getting list of TODOs:
 
 ```ruby
 require 'camp3'
@@ -51,19 +53,21 @@ Camp3.configure do |config|
   config.access_token = ENV['BASECAMP3_ACCESS_TOKEN']
 end
 
-projects = Camp3.projects
+client = Camp3.client
+
+projects = client.projects
 
 projects.each do |p|
   puts "Project: #{p.inspect}"
 
   puts "Todo set: #{p.todoset.inspect}"
 
-  todoset = Camp3.todoset(p)
+  todoset = client.todoset(p)
 
-  Camp3.todolists(todoset).each do |list|
+  client.todolists(todoset).each do |list|
     puts "Todolist: #{list.title}"
 
-    Camp3.todos(list).each do |todo|
+    client.todos(list).each do |todo|
       puts todo.inspect
     end
   end
@@ -75,6 +79,10 @@ For more examples, check the [examples](examples/) folder
 ## Contributing
 
 Check out the [Contributing](CONTRIBUTING.md) page.
+
+## Changelog
+
+For inspecting the changes and tag releases, check the [Changelog](CHANGELOG.md) page
 
 ## Appreciation
 
