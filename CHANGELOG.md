@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased](https://github.com/renehernandez/camp3/tree/HEAD)
+## [v0.0.3](https://github.com/renehernandez/camp3/tree/v0.0.3) (2020-07-26)
 
 **Implemented enhancements:**
 
