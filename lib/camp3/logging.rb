@@ -15,7 +15,6 @@ module Camp3
       @logger ||= default_logger
     end
 
-
     private
 
     # Create and configure a logger

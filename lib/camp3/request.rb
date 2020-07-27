@@ -6,6 +6,7 @@ module Camp3
   # @private
   class Request
     include HTTParty
+    include Logging
     format :json
     headers 'Accept' => 'application/json'
     parser(proc { |body, _| parse(body) })
@@ -16,8 +17,9 @@ module Camp3
       Valid = 'Valid'
     end
 
-    def initialize(access_token, user_agent)
+    def initialize(access_token, user_agent, client)
       @access_token = access_token
+      @client = client
 
       self.class.headers 'User-Agent' => user_agent
     end
@@ -55,7 +57,7 @@ module Camp3
         
         params[:headers] ||= {}
 
-        full_endpoint = override_path ? path : Camp3.api_endpoint + path
+        full_endpoint = override_path ? path : @client.api_endpoint + path
 
         execute_request(method, full_endpoint, params)
       end
@@ -67,7 +69,7 @@ module Camp3
     def execute_request(method, endpoint, params)
       params[:headers].merge!(authorization_header)
       
-      Camp3.logger.debug("Method: #{method}; URL: #{endpoint}")
+      logger.debug("Method: #{method}; URL: #{endpoint}")
       response, result = validate self.class.send(method, endpoint, params)
 
       response = extract_parsed(response) if result == Result::Valid
@@ -83,7 +85,7 @@ module Camp3
       error_klass = Error::STATUS_MAPPINGS[response.code]
 
       if error_klass == Error::Unauthorized && response.parsed_response.error.include?("OAuth token expired (old age)")
-        Camp3.logger.debug("Access token expired. Please obtain a new access token")
+        logger.debug("Access token expired. Please obtain a new access token")
         return response, Result::AccessTokenExpired
       end
 
