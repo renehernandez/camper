@@ -4,7 +4,7 @@ require 'spec_helper'
 
 RSpec.describe Camp3::Request do
   before do
-    @request = described_class.new('token', 'user-agent')
+    @request = described_class.new('token', 'user-agent', Camp3.client)
   end
 
   it { expect(@request).to respond_to :get }
@@ -34,7 +34,7 @@ RSpec.describe Camp3::Request do
 
   describe '#authorization_header' do
     it 'raises MissingCredentials when access_token is not set' do
-      request = described_class.new('', 'user-agent')
+      request = described_class.new('', 'user-agent', Camp3.client)
       expect do
         request.send(:authorization_header)
       end.to raise_error(Camp3::Error::MissingCredentials)

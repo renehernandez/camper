@@ -97,7 +97,7 @@ module Camp3
     def extract_parsed(response)
       parsed = response.parsed_response
       
-      parsed.client = self if parsed.respond_to?(:client=)
+      parsed.client = @client if parsed.respond_to?(:client=)
       parsed.parse_headers!(response.headers) if parsed.respond_to?(:parse_headers!)
 
       parsed
