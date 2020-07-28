@@ -28,4 +28,10 @@ RSpec.describe Camp3 do
       expect(client2.refresh_token).to eq('refresh2')
     end
   end
+
+  describe '#configure' do
+    it 'returns a Camp3::Client' do
+      expect(described_class.configure {}).to be_a Camp3::Client
+    end
+  end
 end
