@@ -28,16 +28,6 @@ module Camp3
       end
     end
 
-    # def configure
-    #   yield self
-    # end
-
-    # # Sets all configuration options to their default values
-    # # when this module is extended.
-    # def self.extended(base)
-    #   base.reset
-    # end
-
     # Creates a hash of options and their values.
     def options
       VALID_OPTIONS_KEYS.inject({}) do |option, key|
