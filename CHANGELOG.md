@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased](https://github.com/renehernandez/camp3/tree/HEAD)
+
+**Implemented enhancements:**
+
+- Refactor usage around the client object [\#18](https://github.com/renehernandez/camp3/pull/18)
+
 ## [v0.0.3](https://github.com/renehernandez/camp3/tree/v0.0.3) (2020-07-26)
 
 **Implemented enhancements:**
