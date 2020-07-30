@@ -24,36 +24,52 @@ $ gem install camp3
 
 ## Usage
 
-Configuration example:
+Getting a client and configuring it:
 
 ```ruby
 require 'camp3'
 
-Camp3.configure do |config|
+client = Camp3.client
+
+client.configure do |config|
   config.client_id = ENV['BASECAMP3_CLIENT_ID']
   config.client_secret = ENV['BASECAMP3_CLIENT_SECRET']
   config.account_number = ENV['BASECAMP3_ACCOUNT_NUMBER']
   config.refresh_token = ENV['BASECAMP3_REFRESH_TOKEN']
   config.access_token = ENV['BASECAMP3_ACCESS_TOKEN']
 end
+
+projects = client.projects
 ```
 
-For more complex examples, we recommend using a client, instead of the top level `Camp3` wrapper. A `client` has a builtin mechanism to retry requests when the access token has expired and update its information (so it will use the new access token instead of the old one), as oppose to the top level `Camp3` which would request a new access token every time a request were to be made.
+Alternatively, it is possible to invoke the top-level `#configure` method to get a client:
+
+```ruby
+require 'camp3'
+
+client = Camp3.configure do |config|
+  config.client_id = ENV['BASECAMP3_CLIENT_ID']
+  config.client_secret = ENV['BASECAMP3_CLIENT_SECRET']
+  config.account_number = ENV['BASECAMP3_ACCOUNT_NUMBER']
+  config.refresh_token = ENV['BASECAMP3_REFRESH_TOKEN']
+  config.access_token = ENV['BASECAMP3_ACCESS_TOKEN']
+end
+
+projects = client.projects
+```
 
 Example getting list of TODOs:
 
 ```ruby
 require 'camp3'
 
-Camp3.configure do |config|
+client = Camp3.configure do |config|
   config.client_id = ENV['BASECAMP3_CLIENT_ID']
   config.client_secret = ENV['BASECAMP3_CLIENT_SECRET']
   config.account_number = ENV['BASECAMP3_ACCOUNT_NUMBER']
   config.refresh_token = ENV['BASECAMP3_REFRESH_TOKEN']
   config.access_token = ENV['BASECAMP3_ACCESS_TOKEN']
 end
-
-client = Camp3.client
 
 projects = client.projects
 
@@ -74,7 +90,7 @@ projects.each do |p|
 end
 ```
 
-For more examples, check the [examples](examples/) folder
+For more examples, check out the [examples](examples/) folder
 
 ## Contributing
 

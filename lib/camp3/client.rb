@@ -4,25 +4,24 @@ module Camp3
   # Wrapper for the Camp3 REST API.
   class Client
     Dir[File.expand_path('api/*.rb', __dir__)].each { |f| require f }
+
+    extend Forwardable
     
+    def_delegators :@config, *(Configuration::VALID_OPTIONS_KEYS)
+    def_delegators :@config, :authz_endpoint, :token_endpoint, :api_endpoint, :base_api_endpoint
+
     # Keep in alphabetical order
     include Authorization
+    include Logging
     include MessageAPI
     include ProjectAPI
     include ResourceAPI
     include TodoAPI
 
-    # @private
-    attr_accessor(*Configuration::VALID_OPTIONS_KEYS)
-
     # Creates a new API.
     # @raise [Error:MissingCredentials]
     def initialize(options = {})
-      options = Camp3.options.merge(options)
-      
-      (Configuration::VALID_OPTIONS_KEYS).each do |key|
-        send("#{key}=", options[key]) if options[key]
-      end
+      @config = Configuration.new(options)
     end
 
     %w[get post put delete].each do |method|
@@ -37,12 +36,20 @@ module Camp3
       end
     end
 
+    # Allows setting configuration values for this client
+    # returns the client instance being configured
+    def configure
+      yield @config
+
+      self
+    end
+
     # Text representation of the client, masking private token.
     #
     # @return [String]
     def inspect
       inspected = super
-      inspected.sub! @access_token, only_show_last_four_chars(@access_token) if @access_token
+      inspected.sub! @config.access_token, only_show_last_four_chars(@config.access_token) if @config.access_token
       inspected
     end
 
@@ -57,7 +64,7 @@ module Camp3
     private
 
     def new_request
-      Request.new(@access_token, @user_agent)
+      Request.new(@config.access_token, @config.user_agent, self)
     end
 
     def only_show_last_four_chars(token)

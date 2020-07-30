@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'forwardable'
 require 'rack/oauth2'
 
 require "camp3/version"
@@ -14,9 +15,6 @@ require "camp3/request"
 require "camp3/client"
 
 module Camp3
-  extend Logging
-  extend Configuration
-
   # Alias for Camp3::Client.new
   #
   # @return [Camp3::Client]
@@ -24,16 +22,11 @@ module Camp3
     Camp3::Client.new(options)
   end
 
-  # Delegate to Camp3::Client
-  def self.method_missing(method, *args, &block)
-    return super unless client.respond_to?(method)
-
-    client.send(method, *args, &block)
-  end
-
-  # Delegate to Camp3::Client
-  def self.respond_to_missing?(method_name, include_private = false)
-    client.respond_to?(method_name) || super
+  # Delegates to Camp3::Client configure method
+  #
+  # @return [Camp3::Client]
+  def self.configure(&block)
+    self.client.configure(&block)
   end
 
 end

@@ -1,12 +1,10 @@
 require 'camp3'
 
-Camp3.configure do |config|
+client = Camp3.configure do |config|
     config.client_id = ENV['BASECAMP3_CLIENT_ID']
     config.client_secret = ENV['BASECAMP3_CLIENT_SECRET']
     config.redirect_uri = ENV['BASECAMP3_REDIRECT_URI']
 end
-
-client = Camp3.client
 
 # Get the authorization uri
 puts client.authorization_uri

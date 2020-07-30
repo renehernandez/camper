@@ -11,11 +11,11 @@ module Camp3
 
     def authz_client
       Rack::OAuth2::Client.new(
-        identifier: Camp3.client_id,
-        secret: Camp3.client_secret,
-        redirect_uri: Camp3.redirect_uri,
-        authorization_endpoint: Camp3.authz_endpoint,
-        token_endpoint: Camp3.token_endpoint,
+        identifier: @config.client_id,
+        secret: @config.client_secret,
+        redirect_uri: @config.redirect_uri,
+        authorization_endpoint: @config.authz_endpoint,
+        token_endpoint: @config.token_endpoint,
       )
     end
 
@@ -26,10 +26,9 @@ module Camp3
       # Passing secrets as query string
       token = client.access_token!(
         client_auth_method: nil,
-        client_id: Camp3.client_id,
-        client_secret: Camp3.client_secret,
+        client_id: @config.client_id,
+        client_secret: @config.client_secret,
         type: :web_server
-        # code: auth_code
       )
 
       store_tokens(token)
@@ -37,17 +36,16 @@ module Camp3
       token
     end
 
-    def update_access_token!(refresh_token = nil)
-      Camp3.logger.debug "Update access token using refresh token"
+    def update_access_token!
+      logger.debug "Update access token using refresh token"
       
-      refresh_token = Camp3.refresh_token unless refresh_token
       client = authz_client
-      client.refresh_token = refresh_token
+      client.refresh_token = @config.refresh_token
 
       token = client.access_token!(
         client_auth_method: nil,
-        client_id: Camp3.client_id,
-        client_secret: Camp3.client_secret,
+        client_id: @config.client_id,
+        client_secret: @config.client_secret,
         type: :refresh
       )
 
@@ -59,8 +57,8 @@ module Camp3
     private
 
     def store_tokens(token)
-      @access_token = token.access_token
-      @refresh_token = token.refresh_token
+      @config.access_token = token.access_token
+      @config.refresh_token = token.refresh_token
     end
   end
 end

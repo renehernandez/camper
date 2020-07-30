@@ -2,7 +2,7 @@
 
 module Camp3
   # Defines constants and methods related to configuration.
-  module Configuration
+  class Configuration
     include Logging
 
     # An array of valid keys in the options hash when configuring a Basecamp::API.
@@ -22,14 +22,10 @@ module Camp3
     # @private
     attr_accessor(*VALID_OPTIONS_KEYS)
 
-    def configure
-      yield self
-    end
-
-    # Sets all configuration options to their default values
-    # when this module is extended.
-    def self.extended(base)
-      base.reset
+    def initialize(options = {})
+      VALID_OPTIONS_KEYS.each do |key|
+        send("#{key}=", options[key]) if options[key]
+      end
     end
 
     # Creates a hash of options and their values.
@@ -66,6 +62,10 @@ module Camp3
     end
 
     def base_api_endpoint
+      self.class.base_api_endpoint
+    end
+
+    def self.base_api_endpoint
       "https://3.basecampapi.com"
     end
   end
