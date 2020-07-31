@@ -17,7 +17,7 @@ RSpec.describe Camp3::Request do
       default_options = described_class.default_options
       expect(default_options).to be_a Hash
       expect(default_options[:format]).to eq(:json)
-      expect(default_options[:headers]).to eq({'Accept' => 'application/json', 'User-Agent' => 'user-agent'})
+      expect(default_options[:headers]).to eq({ 'Accept' => 'application/json', 'Content-Type' => 'application/json', 'User-Agent' => 'user-agent' })
     end
   end
 
