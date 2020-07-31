@@ -24,6 +24,14 @@ module Camp3
       data[key]
     end
 
+    # Check whether a resource can be commented on or not
+    # given the presences of `comments_count` and `comments_url` keys
+    #
+    # @return [Boolean]
+    def can_be_commented?
+      hash.key?('comments_url') && hash.key?('comments_count')
+    end
+
     private
 
     attr_reader :hash, :data
