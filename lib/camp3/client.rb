@@ -12,6 +12,7 @@ module Camp3
 
     # Keep in alphabetical order
     include Authorization
+    include CommentAPI
     include Logging
     include MessageAPI
     include ProjectAPI
