@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased](https://github.com/renehernandez/camp3/tree/HEAD)
+
+**Implemented enhancements:**
+
+- Enable dependabot [\#22](https://github.com/renehernandez/camp3/pull/22)
+
 ## [v0.0.4](https://github.com/renehernandez/camp3/tree/v0.0.4) (2020-08-02)
 
 **Implemented enhancements:**
