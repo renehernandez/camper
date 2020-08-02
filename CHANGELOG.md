@@ -4,6 +4,8 @@
 
 **Implemented enhancements:**
 
+- Add Comments API module [\#11](https://github.com/renehernandez/camp3/issues/11)
+- Add Comment API Module [\#19](https://github.com/renehernandez/camp3/pull/19)
 - Refactor usage around the client object [\#18](https://github.com/renehernandez/camp3/pull/18)
 
 ## [v0.0.3](https://github.com/renehernandez/camp3/tree/v0.0.3) (2020-07-26)
