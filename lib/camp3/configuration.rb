@@ -23,6 +23,7 @@ module Camp3
     attr_accessor(*VALID_OPTIONS_KEYS)
 
     def initialize(options = {})
+      options[:user_agent] ||= DEFAULT_USER_AGENT
       VALID_OPTIONS_KEYS.each do |key|
         send("#{key}=", options[key]) if options[key]
       end

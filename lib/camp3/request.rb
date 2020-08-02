@@ -8,7 +8,7 @@ module Camp3
     include HTTParty
     include Logging
     format :json
-    headers 'Accept' => 'application/json'
+    headers 'Accept' => 'application/json', 'Content-Type' => 'application/json'
     parser(proc { |body, _| parse(body) })
 
     module Result
@@ -67,6 +67,7 @@ module Camp3
 
     # Executes the request
     def execute_request(method, endpoint, params)
+      params[:headers].merge!(self.class.headers)
       params[:headers].merge!(authorization_header)
       
       logger.debug("Method: #{method}; URL: #{endpoint}")
