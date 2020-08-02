@@ -6,6 +6,10 @@
 
 - Enable dependabot [\#22](https://github.com/renehernandez/camp3/pull/22)
 
+**Merged pull requests:**
+
+- Bump rubocop-performance from 1.6.1 to 1.7.1 [\#25](https://github.com/renehernandez/camp3/pull/25)
+
 ## [v0.0.4](https://github.com/renehernandez/camp3/tree/v0.0.4) (2020-08-02)
 
 **Implemented enhancements:**
