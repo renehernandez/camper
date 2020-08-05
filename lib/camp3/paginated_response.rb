@@ -4,6 +4,9 @@ module Camp3
   # Wrapper class of paginated response.
   class PaginatedResponse
     include Logging
+    extend Forwardable
+
+    def_delegators :@array, :to_ary, :first
 
     attr_accessor :client
 
@@ -43,30 +46,13 @@ module Camp3
     def next_page
       return nil if @client.nil? || !has_next_page?
 
-      @client.get(client_relative_path(@pagination_data.next))
-    end
-
-    def method_missing(name, *args, &block)
-      if @array.respond_to?(name)
-        @array.send(name, *args, &block)
-      else
-        super
-      end
-    end
-
-    def respond_to_missing?(method_name, include_private = false)
-      super || @array.respond_to?(method_name, include_private)
+      @client.get(@pagination_data.next, override_path: true)
     end
 
     private
 
     def lazy_paginate
       to_enum(:each_page).lazy.flat_map(&:to_ary)
-    end
-
-    def client_relative_path(link)
-      client_endpoint_path = URI.parse(@client.api_endpoint).request_uri # api/v4
-      URI.parse(link).request_uri.sub(client_endpoint_path, '')
     end
 
     def each_page

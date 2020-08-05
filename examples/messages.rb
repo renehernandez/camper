@@ -10,7 +10,7 @@ end
 
 projects = client.projects
 
-projects.each do |p|
+projects.auto_paginate do |p|
   puts "Project: #{p.name}"
 
   message_board = client.message_board(p)
@@ -18,7 +18,7 @@ projects.each do |p|
 
   messages = client.messages(message_board)
 
-  messages.each do |msg|
+  messages.auto_paginate do |msg|
     puts msg.inspect
   end
 end

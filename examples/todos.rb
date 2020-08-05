@@ -10,17 +10,17 @@ end
 
 projects = client.projects
 
-projects.each do |p|
+projects.auto_paginate do |p|
   puts "Project: #{p.inspect}"
 
   puts "Todo set: #{p.todoset.inspect}"
 
   todoset = client.todoset(p)
 
-  client.todolists(todoset).each do |list|
+  client.todolists(todoset).auto_paginate do |list|
     puts "Todolist: #{list.title}"
 
-    client.todos(list).each do |todo|
+    client.todos(list).auto_paginate do |todo|
       puts todo.inspect
     end
   end
