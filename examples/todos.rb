@@ -17,7 +17,7 @@ projects.auto_paginate do |p|
 
   todoset = client.todoset(p)
 
-  client.todolists(todoset).auto_paginate do |list|
+  client.todolists(todoset).auto_paginate(5) do |list|
     puts "Todolist: #{list.title}"
 
     client.todos(list).auto_paginate do |todo|
