@@ -6,6 +6,11 @@
 
 - Enable dependabot [\#22](https://github.com/renehernandez/camp3/pull/22)
 
+**Fixed bugs:**
+
+- Implement pagination according to basecamp 3 API [\#20](https://github.com/renehernandez/camp3/issues/20)
+- Implement pagination according to Basecamp 3 API [\#26](https://github.com/renehernandez/camp3/pull/26)
+
 **Merged pull requests:**
 
 - Bump rubocop-performance from 1.6.1 to 1.7.1 [\#25](https://github.com/renehernandez/camp3/pull/25)
