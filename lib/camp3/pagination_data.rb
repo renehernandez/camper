@@ -4,18 +4,29 @@ module Camp3
   # Parses link header.
   #
   # @private
-  class PageLinks
+  class PaginationData
+    include Logging
+
     HEADER_LINK = 'Link'
+    HEADER_TOTAL_COUNT = 'X-Total-Count'
+
     DELIM_LINKS = ','
     LINK_REGEX = /<([^>]+)>; rel="([^"]+)"/.freeze
-    METAS = %w[last next first prev].freeze
+    METAS = %w[next].freeze
 
     attr_accessor(*METAS)
+    attr_accessor :total_count
 
     def initialize(headers)
       link_header = headers[HEADER_LINK]
 
-      extract_links(link_header) if link_header && link_header =~ /(next|first|last|prev)/
+      @total_count = headers[HEADER_TOTAL_COUNT].to_i
+
+      extract_links(link_header) if link_header && link_header =~ /(next)/
+    end
+
+    def inspect
+      "Next URL: #{@next}; Total Count: #{@total_count}"
     end
 
     private

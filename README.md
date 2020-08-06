@@ -55,6 +55,7 @@ client = Camp3.configure do |config|
   config.access_token = ENV['BASECAMP3_ACCESS_TOKEN']
 end
 
+# gets a paginated response
 projects = client.projects
 ```
 
@@ -71,19 +72,22 @@ client = Camp3.configure do |config|
   config.access_token = ENV['BASECAMP3_ACCESS_TOKEN']
 end
 
+# gets a paginated response
 projects = client.projects
 
-projects.each do |p|
+# iterate all projects
+projects.auto_paginate do |p|
   puts "Project: #{p.inspect}"
 
   puts "Todo set: #{p.todoset.inspect}"
 
   todoset = client.todoset(p)
 
-  client.todolists(todoset).each do |list|
+  # iterate over the first 5 todo lists
+  client.todolists(todoset).auto_paginate(5) do |list|
     puts "Todolist: #{list.title}"
 
-    client.todos(list).each do |todo|
+    client.todos(list).auto_paginate do |todo|
       puts todo.inspect
     end
   end

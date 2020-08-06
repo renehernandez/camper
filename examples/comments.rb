@@ -12,7 +12,7 @@ end
 
 projects = client.projects
 
-projects.each do |p|
+projects.auto_paginate do |p|
   puts "Project: #{p.name}"
 
   message_board = client.message_board(p)
@@ -27,7 +27,9 @@ projects.each do |p|
   puts "Todolist: #{list.title}, can be commented on: #{list.can_be_commented?}"
   client.add_comment(list, 'New <b>comment</b> with <i>HTML support</i>')
   comments = client.comments(list)
-  comments.each do |c|
-    puts "Comment content: #{c.content}"
+  idx = 0
+  comments.auto_paginate do |c|
+    puts "Comment #{idx} content: #{c.content}"
+    idx += 1
   end
 end
