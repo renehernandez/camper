@@ -2,18 +2,17 @@ name: CI - Changelog
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   changelog_prerelease:
     name: Update Changelog For Prerelease
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
-          ref: master
+          ref: main
       - name: Update Changelog
         uses: heinrichreimer/github-changelog-generator-action@v2.1.1
         with:
