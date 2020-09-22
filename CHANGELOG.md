@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased](https://github.com/renehernandez/camper/tree/HEAD)
+## [v0.0.5](https://github.com/renehernandez/camper/tree/v0.0.5) (2020-09-22)
 
 **Implemented enhancements:**
 
@@ -9,6 +9,11 @@
 **Fixed bugs:**
 
 - Implement pagination according to basecamp 3 API [\#20](https://github.com/renehernandez/camper/issues/20)
+- Implement pagination according to Basecamp 3 API [\#26](https://github.com/renehernandez/camper/pull/26)
+
+**Documentation:**
+
+- Update docs for retry [\#17](https://github.com/renehernandez/camper/pull/17)
 
 **Merged pull requests:**
 
@@ -30,10 +35,6 @@
 - Add Comment API Module [\#19](https://github.com/renehernandez/camper/pull/19)
 - Refactor usage around the client object [\#18](https://github.com/renehernandez/camper/pull/18)
 
-**Fixed bugs:**
-
-- Implement pagination according to Basecamp 3 API [\#26](https://github.com/renehernandez/camper/pull/26)
-
 ## [v0.0.3](https://github.com/renehernandez/camper/tree/v0.0.3) (2020-07-26)
 
 **Implemented enhancements:**
@@ -48,7 +49,6 @@
 **Documentation:**
 
 - Initial documentation [\#5](https://github.com/renehernandez/camper/issues/5)
-- Update docs for retry [\#17](https://github.com/renehernandez/camper/pull/17)
 - Add section to categorize documentation changes [\#14](https://github.com/renehernandez/camper/pull/14)
 - Docs [\#10](https://github.com/renehernandez/camper/pull/10)
 
