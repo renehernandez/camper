@@ -1,64 +1,68 @@
 # Changelog
 
-## [Unreleased](https://github.com/renehernandez/camp3/tree/HEAD)
+## [Unreleased](https://github.com/renehernandez/camper/tree/HEAD)
 
 **Implemented enhancements:**
 
-- Enable dependabot [\#22](https://github.com/renehernandez/camp3/pull/22)
+- Enable dependabot [\#22](https://github.com/renehernandez/camper/pull/22)
 
 **Fixed bugs:**
 
-- Implement pagination according to basecamp 3 API [\#20](https://github.com/renehernandez/camp3/issues/20)
-- Implement pagination according to Basecamp 3 API [\#26](https://github.com/renehernandez/camp3/pull/26)
+- Implement pagination according to basecamp 3 API [\#20](https://github.com/renehernandez/camper/issues/20)
+- Implement pagination according to Basecamp 3 API [\#26](https://github.com/renehernandez/camper/pull/26)
 
 **Merged pull requests:**
 
-- Bump rubocop from 0.89.0 to 0.89.1 [\#28](https://github.com/renehernandez/camp3/pull/28)
-- Bump rubocop from 0.88.0 to 0.89.0 [\#27](https://github.com/renehernandez/camp3/pull/27)
-- Bump rubocop-performance from 1.6.1 to 1.7.1 [\#25](https://github.com/renehernandez/camp3/pull/25)
-- Bump rack-oauth2 from 1.14.0 to 1.16.0 [\#24](https://github.com/renehernandez/camp3/pull/24)
-- Bump rubocop from 0.86.0 to 0.88.0 [\#23](https://github.com/renehernandez/camp3/pull/23)
+- Apply renames for camper [\#33](https://github.com/renehernandez/camper/pull/33)
+- Bump rubocop from 0.89.0 to 0.89.1 [\#28](https://github.com/renehernandez/camper/pull/28)
+- Bump rubocop from 0.88.0 to 0.89.0 [\#27](https://github.com/renehernandez/camper/pull/27)
+- Bump rubocop-performance from 1.6.1 to 1.7.1 [\#25](https://github.com/renehernandez/camper/pull/25)
+- Bump rack-oauth2 from 1.14.0 to 1.16.0 [\#24](https://github.com/renehernandez/camper/pull/24)
+- Bump rubocop from 0.86.0 to 0.88.0 [\#23](https://github.com/renehernandez/camper/pull/23)
 
-## [v0.0.4](https://github.com/renehernandez/camp3/tree/v0.0.4) (2020-08-02)
-
-**Implemented enhancements:**
-
-- Add Comments API module [\#11](https://github.com/renehernandez/camp3/issues/11)
-- Add Comment API Module [\#19](https://github.com/renehernandez/camp3/pull/19)
-- Refactor usage around the client object [\#18](https://github.com/renehernandez/camp3/pull/18)
-
-## [v0.0.3](https://github.com/renehernandez/camp3/tree/v0.0.3) (2020-07-26)
+## [v0.0.4](https://github.com/renehernandez/camper/tree/v0.0.4) (2020-08-02)
 
 **Implemented enhancements:**
 
-- Request a new access token once it expires [\#13](https://github.com/renehernandez/camp3/issues/13)
-- Retry for new access token [\#16](https://github.com/renehernandez/camp3/pull/16)
-
-**Fixed bugs:**
-
-- Remove unreleasedLabel field [\#15](https://github.com/renehernandez/camp3/pull/15)
+- Add Comments API module [\#11](https://github.com/renehernandez/camper/issues/11)
+- Add Comment API Module [\#19](https://github.com/renehernandez/camper/pull/19)
+- Refactor usage around the client object [\#18](https://github.com/renehernandez/camper/pull/18)
 
 **Documentation:**
 
-- Initial documentation [\#5](https://github.com/renehernandez/camp3/issues/5)
-- Update docs for retry [\#17](https://github.com/renehernandez/camp3/pull/17)
-- Add section to categorize documentation changes [\#14](https://github.com/renehernandez/camp3/pull/14)
-- Docs [\#10](https://github.com/renehernandez/camp3/pull/10)
+- Add section to categorize documentation changes [\#14](https://github.com/renehernandez/camper/pull/14)
 
-## [v0.0.2](https://github.com/renehernandez/camp3/tree/v0.0.2) (2020-07-07)
+## [v0.0.3](https://github.com/renehernandez/camper/tree/v0.0.3) (2020-07-26)
 
 **Implemented enhancements:**
 
-- Manage release metadata [\#4](https://github.com/renehernandez/camp3/issues/4)
-- Implement release metadata management [\#9](https://github.com/renehernandez/camp3/pull/9)
-- Unify Resource and ObjectifiedHash classes [\#3](https://github.com/renehernandez/camp3/pull/3)
-- Added utility method to transform web URLs [\#2](https://github.com/renehernandez/camp3/pull/2)
+- Request a new access token once it expires [\#13](https://github.com/renehernandez/camper/issues/13)
+- Retry for new access token [\#16](https://github.com/renehernandez/camper/pull/16)
 
 **Fixed bugs:**
 
-- Added missing import [\#1](https://github.com/renehernandez/camp3/pull/1)
+- Remove unreleasedLabel field [\#15](https://github.com/renehernandez/camper/pull/15)
 
-## [v0.0.1](https://github.com/renehernandez/camp3/tree/v0.0.1) (2020-06-29)
+**Documentation:**
+
+- Initial documentation [\#5](https://github.com/renehernandez/camper/issues/5)
+- Update docs for retry [\#17](https://github.com/renehernandez/camper/pull/17)
+- Docs [\#10](https://github.com/renehernandez/camper/pull/10)
+
+## [v0.0.2](https://github.com/renehernandez/camper/tree/v0.0.2) (2020-07-07)
+
+**Implemented enhancements:**
+
+- Manage release metadata [\#4](https://github.com/renehernandez/camper/issues/4)
+- Implement release metadata management [\#9](https://github.com/renehernandez/camper/pull/9)
+- Unify Resource and ObjectifiedHash classes [\#3](https://github.com/renehernandez/camper/pull/3)
+- Added utility method to transform web URLs [\#2](https://github.com/renehernandez/camper/pull/2)
+
+**Fixed bugs:**
+
+- Added missing import [\#1](https://github.com/renehernandez/camper/pull/1)
+
+## [v0.0.1](https://github.com/renehernandez/camper/tree/v0.0.1) (2020-06-29)
 
 
 
