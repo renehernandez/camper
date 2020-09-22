@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Camp3
+module Camper
   module Authorization
 
     def authorization_uri

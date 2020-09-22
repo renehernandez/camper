@@ -1,13 +1,13 @@
-# camp3 ![CI](https://github.com/renehernandez/camp3/workflows/CI/badge.svg) [![Gem Version](https://badge.fury.io/rb/camp3.svg)](https://badge.fury.io/rb/camp3)
+# camper ![CI](https://github.com/renehernandez/camper/workflows/CI/badge.svg) [![Gem Version](https://badge.fury.io/rb/Camper.svg)](https://badge.fury.io/rb/camper)
 
-Camp3 is a Ruby wrapper for the [Basecamp 3 API](https://github.com/basecamp/bc3-api).
+Camper is a Ruby wrapper for the [Basecamp 3 API](https://github.com/basecamp/bc3-api).
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'camp3'
+gem 'camper'
 ```
 
 And then execute:
@@ -19,7 +19,7 @@ $ bundle
 Or install it yourself as:
 
 ```bash
-$ gem install camp3
+$ gem install camper
 ```
 
 ## Usage
@@ -27,16 +27,16 @@ $ gem install camp3
 Getting a client and configuring it:
 
 ```ruby
-require 'camp3'
+require 'camper'
 
-client = Camp3.client
+client = Camper.client
 
 client.configure do |config|
-  config.client_id = ENV['BASECAMP3_CLIENT_ID']
-  config.client_secret = ENV['BASECAMP3_CLIENT_SECRET']
-  config.account_number = ENV['BASECAMP3_ACCOUNT_NUMBER']
-  config.refresh_token = ENV['BASECAMP3_REFRESH_TOKEN']
-  config.access_token = ENV['BASECAMP3_ACCESS_TOKEN']
+  config.client_id = ENV['BASEcamper_CLIENT_ID']
+  config.client_secret = ENV['BASEcamper_CLIENT_SECRET']
+  config.account_number = ENV['BASEcamper_ACCOUNT_NUMBER']
+  config.refresh_token = ENV['BASEcamper_REFRESH_TOKEN']
+  config.access_token = ENV['BASEcamper_ACCESS_TOKEN']
 end
 
 projects = client.projects
@@ -45,14 +45,14 @@ projects = client.projects
 Alternatively, it is possible to invoke the top-level `#configure` method to get a client:
 
 ```ruby
-require 'camp3'
+require 'camper'
 
-client = Camp3.configure do |config|
-  config.client_id = ENV['BASECAMP3_CLIENT_ID']
-  config.client_secret = ENV['BASECAMP3_CLIENT_SECRET']
-  config.account_number = ENV['BASECAMP3_ACCOUNT_NUMBER']
-  config.refresh_token = ENV['BASECAMP3_REFRESH_TOKEN']
-  config.access_token = ENV['BASECAMP3_ACCESS_TOKEN']
+client = Camper.configure do |config|
+  config.client_id = ENV['BASEcamper_CLIENT_ID']
+  config.client_secret = ENV['BASEcamper_CLIENT_SECRET']
+  config.account_number = ENV['BASEcamper_ACCOUNT_NUMBER']
+  config.refresh_token = ENV['BASEcamper_REFRESH_TOKEN']
+  config.access_token = ENV['BASEcamper_ACCESS_TOKEN']
 end
 
 # gets a paginated response
@@ -62,14 +62,14 @@ projects = client.projects
 Example getting list of TODOs:
 
 ```ruby
-require 'camp3'
+require 'camper'
 
-client = Camp3.configure do |config|
-  config.client_id = ENV['BASECAMP3_CLIENT_ID']
-  config.client_secret = ENV['BASECAMP3_CLIENT_SECRET']
-  config.account_number = ENV['BASECAMP3_ACCOUNT_NUMBER']
-  config.refresh_token = ENV['BASECAMP3_REFRESH_TOKEN']
-  config.access_token = ENV['BASECAMP3_ACCESS_TOKEN']
+client = Camper.configure do |config|
+  config.client_id = ENV['BASEcamper_CLIENT_ID']
+  config.client_secret = ENV['BASEcamper_CLIENT_SECRET']
+  config.account_number = ENV['BASEcamper_ACCOUNT_NUMBER']
+  config.refresh_token = ENV['BASEcamper_REFRESH_TOKEN']
+  config.access_token = ENV['BASEcamper_ACCESS_TOKEN']
 end
 
 # gets a paginated response

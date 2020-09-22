@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Camp3::Client
+class Camper::Client
   module CommentAPI
     def add_comment(resource, content)
       post(resource.comments_url, override_path: true, body: { content: content }.to_json)

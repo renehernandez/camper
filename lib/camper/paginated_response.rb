@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Camp3
+module Camper
   # Wrapper class of paginated response.
   class PaginatedResponse
     include Logging
@@ -32,8 +32,8 @@ module Camp3
     end
 
     def auto_paginate(limit = nil, &block)
-      limit = self.count if limit.nil?
-      return lazy_paginate.take(limit).to_a  unless block_given?
+      limit = count if limit.nil?
+      return lazy_paginate.take(limit).to_a unless block_given?
 
       lazy_paginate.take(limit).each(&block)
     end

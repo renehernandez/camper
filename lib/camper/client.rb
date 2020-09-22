@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-module Camp3
-  # Wrapper for the Camp3 REST API.
+module Camper
+  # Wrapper for the Camper REST API.
   class Client
     Dir[File.expand_path('api/*.rb', __dir__)].each { |f| require f }
 
@@ -32,7 +32,7 @@ module Camp3
 
         update_access_token!
 
-        response, _ = new_request.send(method, path, options)
+        response, = new_request.send(method, path, options)
         response
       end
     end

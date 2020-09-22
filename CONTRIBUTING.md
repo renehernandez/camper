@@ -1,4 +1,4 @@
-# Contributing to Camp3
+# Contributing to Camper
 
 Please take a moment to review this document in order to make the contribution
 process easy and effective for everyone involved!
@@ -30,7 +30,7 @@ Guidelines for bug reports:
    case.
 
 Please try to be as detailed as possible in your report. Include information about
-your Ruby and Camp3 client. Please provide steps to
+your Ruby and Camper client. Please provide steps to
 reproduce the issue as well as the outcome you were expecting! All these details
 will help developers to fix any potential bugs.
 
@@ -120,11 +120,11 @@ in order to craft an excellent pull request:
 
    ```sh
    # Clone your fork of the repo into the current directory
-   git clone https://github.com/<your-username>/camp3
+   git clone https://github.com/<your-username>/Camper
    # Navigate to the newly cloned directory
-   cd camp3
+   cd Camper
    # Assign the original repo to a remote called "upstream"
-   git remote add upstream https://github.com/renehernandez/camp3
+   git remote add upstream https://github.com/renehernandez/Camper
    ```
 
 2. If you cloned a while ago, get the latest changes from upstream:

@@ -2,7 +2,7 @@
 
 require 'logger'
 
-module Camp3
+module Camper
   module Logging
 
     class << self

@@ -1,8 +1,8 @@
-RSpec.describe Camp3::Configuration do
+RSpec.describe Camper::Configuration do
 
   context 'using configure helper with all options' do
     before do
-      @client = Camp3.configure do |config|
+      @client = Camper.configure do |config|
         config.client_id = 'client_id'
         config.client_secret = 'client_secret'
         config.redirect_uri = 'redirect_uri'
@@ -14,34 +14,34 @@ RSpec.describe Camp3::Configuration do
     end
 
     it 'returns a client object' do
-      expect(@client).to be_a Camp3::Client
+      expect(@client).to be_a Camper::Client
     end
 
-    it "sets client_id" do
+    it 'sets client_id' do
       expect(@client.client_id).to eq('client_id')
     end
 
-    it "sets client_secret" do
+    it 'sets client_secret' do
       expect(@client.client_secret).to eq('client_secret')
     end
 
-    it "sets redirect_uri" do
+    it 'sets redirect_uri' do
       expect(@client.redirect_uri).to eq('redirect_uri')
     end
 
-    it "sets refresh_token" do
+    it 'sets refresh_token' do
       expect(@client.refresh_token).to eq('refresh_token')
     end
 
-    it "sets access_token" do
+    it 'sets access_token' do
       expect(@client.access_token).to eq('access_token')
     end
 
-    it "sets user_agent" do
+    it 'sets user_agent' do
       expect(@client.user_agent).to eq('user_agent')
     end
 
-    it "sets the account number" do
+    it 'sets the account number' do
       expect(@client.account_number).to eq('000000')
     end
 

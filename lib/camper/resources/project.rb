@@ -1,4 +1,4 @@
-module Camp3
+module Camper
   class Project < Resource
 
     attr_reader :message_board, :todoset, :schedule

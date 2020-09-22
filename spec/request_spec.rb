@@ -2,9 +2,9 @@
 
 require 'spec_helper'
 
-RSpec.describe Camp3::Request do
+RSpec.describe Camper::Request do
   before do
-    @request = described_class.new('token', 'user-agent', Camp3.client)
+    @request = described_class.new('token', 'user-agent', Camper.client)
   end
 
   it { expect(@request).to respond_to :get }
@@ -24,23 +24,23 @@ RSpec.describe Camp3::Request do
   describe '.parse' do
     it 'returns Resource' do
       body = JSON.unparse(a: 1, b: 2)
-      expect(described_class.parse(body)).to be_an Camp3::Resource
+      expect(described_class.parse(body)).to be_an Camper::Resource
       expect(described_class.parse('true')).to be true
       expect(described_class.parse('false')).to be false
-      expect { described_class.parse('string') }.to raise_error(Camp3::Error::Parsing)
+      expect { described_class.parse('string') }.to raise_error(Camper::Error::Parsing)
     end
   end
 
   describe '#authorization_header' do
     it 'raises MissingCredentials when access_token is not set' do
-      request = described_class.new('', 'user-agent', Camp3.client)
+      request = described_class.new('', 'user-agent', Camper.client)
       expect do
         request.send(:authorization_header)
-      end.to raise_error(Camp3::Error::MissingCredentials)
+      end.to raise_error(Camper::Error::MissingCredentials)
     end
 
     it 'sets the correct header when given a private_token' do
-      expect(@request.send(:authorization_header)).to eq('Authorization' => "Bearer token")
+      expect(@request.send(:authorization_header)).to eq('Authorization' => 'Bearer token')
     end
   end
 end

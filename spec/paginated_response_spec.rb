@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe Camp3::PaginatedResponse do
+RSpec.describe Camper::PaginatedResponse do
   before do
     array = [1, 2, 3, 4]
     @paginated_response = described_class.new array
@@ -15,13 +15,13 @@ RSpec.describe Camp3::PaginatedResponse do
 
   describe '.parse_headers!' do
     it 'parses headers' do
-      next_url = "https://3.basecampapi.com/000000/buckets/11111111/recordings/2222222222/comments.json?page=2"
+      next_url = 'https://3.basecampapi.com/000000/buckets/11111111/recordings/2222222222/comments.json?page=2'
       @paginated_response.parse_headers!('Link' => "<#{next_url}>; rel=\"next\"", 'X-Total-Count' => 10)
       client = @paginated_response.client = double('client')
       next_page_response = double('next_page_response')
 
       allow(client).to receive(:get).with(next_url, override_path: true).and_return(next_page_response)
-      
+
       expect(@paginated_response.has_next_page?).to be true
       expect(@paginated_response.next_page).to be next_page_response
     end
@@ -39,9 +39,7 @@ RSpec.describe Camp3::PaginatedResponse do
     end
   end
 
-
   describe '#auto_paginate' do
-
     it 'only requests needed pages' do
       next_page_response = double('next_page')
       allow(@paginated_response).to receive(:has_next_page?).and_return(true)
