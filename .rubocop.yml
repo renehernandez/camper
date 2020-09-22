@@ -5,11 +5,13 @@ require: rubocop-performance
 AllCops:
   TargetRubyVersion: 2.5
   NewCops: enable
+  Exclude:
+    - 'camper.gemspec'
 
 Layout/LineLength:
   Max: 123
   Exclude:
-    - 'lib/camp3/client/*'
+    - 'lib/camper/client/*'
     - 'spec/**/*'
 
 Metrics/BlockLength:
@@ -21,9 +23,13 @@ Style/Documentation:
 
 Style/ClassAndModuleChildren:
   Exclude:
-    - 'lib/camp3/*'
-    - 'lib/camp3/api/*'
-    - 'lib/camp3/resources/*'
+    - 'lib/camper/*'
+    - 'lib/camper/api/*'
+    - 'lib/camper/resources/*'
+
+Style/RedundantReturn:
+  Enabled: true
+  AllowMultipleReturnValues: true
 
 Lint/NonDeterministicRequireOrder:
   Enabled: false
@@ -36,3 +42,6 @@ Style/HashTransformKeys:
 
 Style/HashTransformValues:
   Enabled: true
+
+Style/AccessorGrouping:
+  Enabled: false

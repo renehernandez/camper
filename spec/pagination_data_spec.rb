@@ -2,9 +2,9 @@
 
 require 'spec_helper'
 
-RSpec.describe Camp3::PaginationData do
+RSpec.describe Camper::PaginationData do
   before do
-    @pagination_data = described_class.new('Link' => '<https://3.basecampapi.com/4379428/buckets/17149347/recordings/2680701090/comments.json?page=2>; rel="next"', "X-Total-Count" => 10)
+    @pagination_data = described_class.new('Link' => '<https://3.basecampapi.com/4379428/buckets/17149347/recordings/2680701090/comments.json?page=2>; rel="next"', 'X-Total-Count' => 10)
   end
 
   describe '.extract_links' do

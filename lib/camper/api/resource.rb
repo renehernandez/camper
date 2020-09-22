@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Camp3::Client
+class Camper::Client
   module ResourceAPI
     
     def resource(url)

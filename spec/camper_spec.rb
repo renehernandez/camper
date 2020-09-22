@@ -1,23 +1,23 @@
-RSpec.describe Camp3 do
-  it "has a version number" do
-    expect(Camp3::VERSION).not_to be nil
+RSpec.describe Camper do
+  it 'has a version number' do
+    expect(Camper::VERSION).not_to be nil
   end
 
-  describe '#client' do 
-    it 'is a Camp3::Client' do
-      expect(described_class.client).to be_a Camp3::Client
+  describe '#client' do
+    it 'is a Camper::Client' do
+      expect(described_class.client).to be_a Camper::Client
     end
 
     it 'does not override each other' do
       client1 = described_class.client(
-        client_id: 'client1', 
-        client_secret: 'secret1', 
+        client_id: 'client1',
+        client_secret: 'secret1',
         account_number: '1',
         refresh_token: 'refresh1'
       )
       client2 = described_class.client(
-        client_id: 'client2', 
-        client_secret: 'secret2', 
+        client_id: 'client2',
+        client_secret: 'secret2',
         account_number: '2',
         refresh_token: 'refresh2'
       )
@@ -30,8 +30,8 @@ RSpec.describe Camp3 do
   end
 
   describe '#configure' do
-    it 'returns a Camp3::Client' do
-      expect(described_class.configure {}).to be_a Camp3::Client
+    it 'returns a Camper::Client' do
+      expect(described_class.configure {}).to be_a Camper::Client
     end
   end
 end

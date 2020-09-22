@@ -1,6 +1,6 @@
-require 'camp3'
+require 'camper'
 
-client = Camp3.configure do |config|
+client = Camper.configure do |config|
   config.client_id = ENV['BASECAMP3_CLIENT_ID']
   config.client_secret = ENV['BASECAMP3_CLIENT_SECRET']
   config.account_number = ENV['BASECAMP3_ACCOUNT_NUMBER']

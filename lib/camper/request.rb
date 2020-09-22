@@ -1,9 +1,9 @@
 # frozen_string_literal: true
+
 require 'httparty'
 require 'json'
 
-module Camp3
-  # @private
+module Camper
   class Request
     include HTTParty
     include Logging
@@ -12,9 +12,9 @@ module Camp3
     parser(proc { |body, _| parse(body) })
 
     module Result
-      AccessTokenExpired = 'AccessTokenExpired'
+      ACCESS_TOKEN_EXPIRED = 'AccessTokenExpired'
 
-      Valid = 'Valid'
+      VALID = 'Valid'
     end
 
     def initialize(access_token, user_agent, client)
@@ -45,7 +45,7 @@ module Camp3
 
     # Decodes a JSON response into Ruby object.
     def self.decode(response)
-      response ? JSON.load(response) : {}
+      response ? JSON.parse(response) : {}
     rescue JSON::ParserError
       raise Error::Parsing, 'The response is not a valid JSON'
     end
@@ -54,7 +54,7 @@ module Camp3
       define_method method do |path, options = {}|
         params = options.dup
         override_path = params.delete(:override_path)
-        
+
         params[:headers] ||= {}
 
         full_endpoint = override_path ? path : @client.api_endpoint + path
@@ -69,11 +69,11 @@ module Camp3
     def execute_request(method, endpoint, params)
       params[:headers].merge!(self.class.headers)
       params[:headers].merge!(authorization_header)
-      
+
       logger.debug("Method: #{method}; URL: #{endpoint}")
       response, result = validate self.class.send(method, endpoint, params)
 
-      response = extract_parsed(response) if result == Result::Valid
+      response = extract_parsed(response) if result == Result::VALID
 
       return response, result
     end
@@ -85,9 +85,9 @@ module Camp3
     def validate(response)
       error_klass = Error::STATUS_MAPPINGS[response.code]
 
-      if error_klass == Error::Unauthorized && response.parsed_response.error.include?("OAuth token expired (old age)")
-        logger.debug("Access token expired. Please obtain a new access token")
-        return response, Result::AccessTokenExpired
+      if error_klass == Error::Unauthorized && response.parsed_response.error.include?('OAuth token expired (old age)')
+        logger.debug('Access token expired. Please obtain a new access token')
+        return response, Result::ACCESS_TOKEN_EXPIRED
       end
 
       raise error_klass, response if error_klass
@@ -97,7 +97,7 @@ module Camp3
 
     def extract_parsed(response)
       parsed = response.parsed_response
-      
+
       parsed.client = @client if parsed.respond_to?(:client=)
       parsed.parse_headers!(response.headers) if parsed.respond_to?(:parse_headers!)
 

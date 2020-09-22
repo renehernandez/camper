@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Camp3
+module Camper
   # Defines constants and methods related to configuration.
   class Configuration
     include Logging
@@ -17,7 +17,7 @@ module Camp3
     ].freeze
 
     # The user agent that will be sent to the API endpoint if none is set.
-    DEFAULT_USER_AGENT = "Camp3 Ruby Gem #{Camp3::VERSION}"
+    DEFAULT_USER_AGENT = "Camper Ruby Gem #{Camper::VERSION}"
 
     # @private
     attr_accessor(*VALID_OPTIONS_KEYS)
@@ -36,9 +36,10 @@ module Camp3
       end
     end
 
+    # rubocop:disable Metrics/AbcSize
     # Resets all configuration options to the defaults.
     def reset
-      logger.debug "Resetting attributes to default environment values"
+      logger.debug 'Resetting attributes to default environment values'
       self.client_id      = ENV['BASECAMP3_CLIENT_ID']
       self.client_secret  = ENV['BASECAMP3_CLIENT_SECRET']
       self.redirect_uri   = ENV['BASECAMP3_REDIRECT_URI']
@@ -47,6 +48,7 @@ module Camp3
       self.access_token   = ENV['BASECAMP3_ACCESS_TOKEN']
       self.user_agent     = ENV['BASECAMP3_USER_AGENT'] || DEFAULT_USER_AGENT
     end
+    # rubocop:enable Metrics/AbcSize
 
     def authz_endpoint
       'https://launchpad.37signals.com/authorization/new'
@@ -57,7 +59,7 @@ module Camp3
     end
 
     def api_endpoint
-      raise Camp3::Error::InvalidConfiguration, "missing basecamp account" unless self.account_number
+      raise Camper::Error::InvalidConfiguration, "missing basecamp account" unless self.account_number
       
       "#{self.base_api_endpoint}/#{self.account_number}"
     end

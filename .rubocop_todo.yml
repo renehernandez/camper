@@ -10,13 +10,13 @@
 # Cop supports --auto-correct.
 Layout/EmptyLineAfterMagicComment:
   Exclude:
-    - 'lib/camp3/request.rb'
+    - 'lib/camper/request.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
 Layout/EmptyLines:
   Exclude:
-    - 'lib/camp3/logging.rb'
+    - 'lib/camper/logging.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
@@ -32,8 +32,8 @@ Layout/EmptyLinesAroundBlockBody:
 # SupportedStyles: empty_lines, empty_lines_except_namespace, empty_lines_special, no_empty_lines, beginning_only, ending_only
 Layout/EmptyLinesAroundClassBody:
   Exclude:
-    - 'lib/camp3/resource.rb'
-    - 'lib/camp3/resources/project.rb'
+    - 'lib/camper/resource.rb'
+    - 'lib/camper/resources/project.rb'
 
 # Offense count: 6
 # Cop supports --auto-correct.
@@ -41,19 +41,19 @@ Layout/EmptyLinesAroundClassBody:
 # SupportedStyles: empty_lines, empty_lines_except_namespace, empty_lines_special, no_empty_lines
 Layout/EmptyLinesAroundModuleBody:
   Exclude:
-    - 'lib/camp3.rb'
-    - 'lib/camp3/api/project.rb'
-    - 'lib/camp3/api/resource.rb'
-    - 'lib/camp3/api/todo.rb'
-    - 'lib/camp3/authorization.rb'
-    - 'lib/camp3/logging.rb'
+    - 'lib/camper.rb'
+    - 'lib/camper/api/project.rb'
+    - 'lib/camper/api/resource.rb'
+    - 'lib/camper/api/todo.rb'
+    - 'lib/camper/authorization.rb'
+    - 'lib/camper/logging.rb'
 
 # Offense count: 2
 # Cop supports --auto-correct.
 # Configuration parameters: AllowForAlignment, AllowBeforeTrailingComments, ForceEqualSignAlignment.
 Layout/ExtraSpacing:
   Exclude:
-    - 'camp3.gemspec'
+    - 'camper.gemspec'
 
 # Offense count: 1
 # Cop supports --auto-correct.
@@ -68,7 +68,7 @@ Layout/IndentationWidth:
 # SupportedStyles: space, no_space
 Layout/SpaceAroundEqualsInParameterDefault:
   Exclude:
-    - 'lib/camp3/api/todo.rb'
+    - 'lib/camper/api/todo.rb'
 
 # Offense count: 2
 # Cop supports --auto-correct.
@@ -76,7 +76,7 @@ Layout/SpaceAroundEqualsInParameterDefault:
 # SupportedStylesForExponentOperator: space, no_space
 Layout/SpaceAroundOperators:
   Exclude:
-    - 'camp3.gemspec'
+    - 'camper.gemspec'
 
 # Offense count: 1
 # Cop supports --auto-correct.
@@ -99,20 +99,20 @@ Layout/TrailingEmptyLines:
 # Configuration parameters: AllowInHeredoc.
 Layout/TrailingWhitespace:
   Exclude:
-    - 'lib/camp3.rb'
-    - 'lib/camp3/api/resource.rb'
-    - 'lib/camp3/authorization.rb'
-    - 'lib/camp3/client.rb'
-    - 'lib/camp3/configuration.rb'
-    - 'lib/camp3/resource.rb'
+    - 'lib/camper.rb'
+    - 'lib/camper/api/resource.rb'
+    - 'lib/camper/authorization.rb'
+    - 'lib/camper/client.rb'
+    - 'lib/camper/configuration.rb'
+    - 'lib/camper/resource.rb'
     - 'spec/configuration_spec.rb'
 
 # Offense count: 2
 # Cop supports --auto-correct.
 Lint/NonDeterministicRequireOrder:
   Exclude:
-    - 'lib/camp3/client.rb'
-    - 'lib/camp3/resource.rb'
+    - 'lib/camper/client.rb'
+    - 'lib/camper/resource.rb'
 
 # Offense count: 2
 # Configuration parameters: CountComments, ExcludedMethods.
@@ -131,31 +131,31 @@ Metrics/MethodLength:
 # SupportedStyles: nested, compact
 Style/ClassAndModuleChildren:
   Exclude:
-    - 'lib/camp3/api/message.rb'
-    - 'lib/camp3/api/project.rb'
-    - 'lib/camp3/api/resource.rb'
-    - 'lib/camp3/api/todo.rb'
+    - 'lib/camper/api/message.rb'
+    - 'lib/camper/api/project.rb'
+    - 'lib/camper/api/resource.rb'
+    - 'lib/camper/api/todo.rb'
 
 # Offense count: 9
 Style/Documentation:
   Exclude:
     - 'spec/**/*'
     - 'test/**/*'
-    - 'lib/camp3.rb'
-    - 'lib/camp3/api/message.rb'
-    - 'lib/camp3/api/project.rb'
-    - 'lib/camp3/api/resource.rb'
-    - 'lib/camp3/api/todo.rb'
-    - 'lib/camp3/authorization.rb'
-    - 'lib/camp3/logging.rb'
-    - 'lib/camp3/resource.rb'
-    - 'lib/camp3/resources/project.rb'
+    - 'lib/camper.rb'
+    - 'lib/camper/api/message.rb'
+    - 'lib/camper/api/project.rb'
+    - 'lib/camper/api/resource.rb'
+    - 'lib/camper/api/todo.rb'
+    - 'lib/camper/authorization.rb'
+    - 'lib/camper/logging.rb'
+    - 'lib/camper/resource.rb'
+    - 'lib/camper/resources/project.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
 Style/ExpandPathArguments:
   Exclude:
-    - 'camp3.gemspec'
+    - 'camper.gemspec'
 
 # Offense count: 15
 # Cop supports --auto-correct.
@@ -166,15 +166,15 @@ Style/FrozenStringLiteralComment:
     - 'Gemfile'
     - 'Rakefile'
     - 'bin/console'
-    - 'camp3.gemspec'
+    - 'camper.gemspec'
     - 'examples/messages.rb'
     - 'examples/oauth.rb'
     - 'examples/obtain_acces_token.rb'
     - 'examples/todos.rb'
-    - 'lib/camp3/resource.rb'
-    - 'lib/camp3/resources/project.rb'
+    - 'lib/camper/resource.rb'
+    - 'lib/camper/resources/project.rb'
     - 'spec/authorization_spec.rb'
-    - 'spec/camp3_spec.rb'
+    - 'spec/camper_spec.rb'
     - 'spec/configuration_spec.rb'
     - 'spec/logging_spec.rb'
     - 'spec/spec_helper.rb'
@@ -191,26 +191,26 @@ Style/HashSyntax:
 # Cop supports --auto-correct.
 Style/OrAssignment:
   Exclude:
-    - 'lib/camp3/authorization.rb'
+    - 'lib/camper/authorization.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
 Style/RedundantParentheses:
   Exclude:
-    - 'lib/camp3/client.rb'
+    - 'lib/camper/client.rb'
 
 # Offense count: 3
 # Cop supports --auto-correct.
 # Configuration parameters: AllowMultipleReturnValues.
 Style/RedundantReturn:
   Exclude:
-    - 'lib/camp3/resource.rb'
+    - 'lib/camper/resource.rb'
 
 # Offense count: 3
 # Cop supports --auto-correct.
 Style/RedundantSelf:
   Exclude:
-    - 'lib/camp3/configuration.rb'
+    - 'lib/camper/configuration.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
@@ -218,7 +218,7 @@ Style/RedundantSelf:
 # SupportedStyles: slashes, percent_r, mixed
 Style/RegexpLiteral:
   Exclude:
-    - 'lib/camp3/resource.rb'
+    - 'lib/camper/resource.rb'
 
 # Offense count: 51
 # Cop supports --auto-correct.
@@ -229,14 +229,14 @@ Style/StringLiterals:
     - 'Gemfile'
     - 'Rakefile'
     - 'bin/console'
-    - 'camp3.gemspec'
-    - 'lib/camp3.rb'
-    - 'lib/camp3/api/project.rb'
-    - 'lib/camp3/authorization.rb'
-    - 'lib/camp3/configuration.rb'
-    - 'lib/camp3/resource.rb'
-    - 'lib/camp3/version.rb'
-    - 'spec/camp3_spec.rb'
+    - 'camper.gemspec'
+    - 'lib/camper.rb'
+    - 'lib/camper/api/project.rb'
+    - 'lib/camper/authorization.rb'
+    - 'lib/camper/configuration.rb'
+    - 'lib/camper/resource.rb'
+    - 'lib/camper/version.rb'
+    - 'spec/camper_spec.rb'
     - 'spec/configuration_spec.rb'
     - 'spec/spec_helper.rb'
 
@@ -246,4 +246,4 @@ Style/StringLiterals:
 # SupportedStylesForMultiline: comma, consistent_comma, no_comma
 Style/TrailingCommaInArguments:
   Exclude:
-    - 'lib/camp3/authorization.rb'
+    - 'lib/camper/authorization.rb'

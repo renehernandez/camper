@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-module Camp3
+module Camper
   module Error
-    # Custom error class for rescuing from all Camp3 errors.
+    # Custom error class for rescuing from all Camper errors.
     class Error < StandardError; end
 
     # Raised when there is a configuration error
@@ -66,12 +66,12 @@ module Camp3
         else
           @response.parsed_response
         end
-      rescue Camp3::Error::Parsing
+      rescue Camper::Error::Parsing
         # Return stringified response when receiving a
         # parsing error to avoid obfuscation of the
         # api error.
         #
-        # note: The Camp3 API does not always return valid
+        # note: The Camper API does not always return valid
         # JSON when there are errors.
         @response.to_s
       end
@@ -79,7 +79,7 @@ module Camp3
       # Handle error response message in case of nested hashes
       def handle_message(message)
         case message
-        when Camp3::Resource
+        when Camper::Resource
           message.to_h.sort.map do |key, val|
             "'#{key}' #{(val.is_a?(Hash) ? val.sort.map { |k, v| "(#{k}: #{v.join(' ')})" } : [val].flatten).join(' ')}"
           end.join(', ')

@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "camp3"
+require "camper"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

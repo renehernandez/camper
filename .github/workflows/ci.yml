@@ -27,27 +27,17 @@ jobs:
         gem install bundler --no-document
         bundle install --jobs 4 --retry 3
         bundle exec rake
-
-  changelog_prerelease:
-    name: Update Changelog For Prerelease
+  lint:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
+    name: Static analysis
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-        with:
-          ref: master
-      - name: Update Changelog
-        uses: heinrichreimer/github-changelog-generator-action@v2.1.1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          issues: true
-          issuesWoLabels: true
-          pullRequests: true
-          prWoLabels: true
-          unreleased: true
-          addSections: '{"documentation":{"prefix":"**Documentation:**","labels":["documentation"]}}'
-      - uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Update Changelog for PR
-          file_pattern: CHANGELOG.md
+    - uses: actions/checkout@v2
+    - name: Set up Ruby 2.7
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.7.x
+    - name: Run lint
+      run: |
+        gem install bundler --no-document
+        bundle install --jobs 4 --retry 3
+        bundle exec rubocop

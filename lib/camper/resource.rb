@@ -1,4 +1,4 @@
-module Camp3
+module Camper
   class Resource
 
     Dir[File.expand_path('resources/*.rb', __dir__)].each { |f| require f }
@@ -32,18 +32,22 @@ module Camp3
       hash.key?('comments_url') && hash.key?('comments_count')
     end
 
+    def self.create(hash)
+      klass = detect_type(hash["url"])
+
+      return klass.new(hash)
+    end
+
     private
 
     attr_reader :hash, :data
 
     def resourcify_data
-      result = @hash.each_with_object({}) do |(key, value), data|
+      @hash.each_with_object({}) do |(key, value), data|
         value = resourcify_value(value)
 
         data[key.to_s] = value
       end
-
-      result
     end
 
     def resourcify_value(input)
@@ -59,15 +63,11 @@ module Camp3
       @data.key?(method_name.to_s) ? @data[method_name.to_s] : super
     end
 
+    # rubocop:disable Style/OptionalBooleanParameter
     def respond_to_missing?(method_name, include_private = false)
       @hash.keys.map(&:to_sym).include?(method_name.to_sym) || super
     end
-
-    def self.create(hash)
-      klass = detect_type(hash["url"])
-
-      return klass.new(hash)
-    end
+    # rubocop:enable Style/OptionalBooleanParameter
 
     def self.detect_type(url)
       case url
@@ -77,5 +77,7 @@ module Camp3
         return Resource
       end
     end
+
+    private_class_method :detect_type
   end
 end
