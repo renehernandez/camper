@@ -5,12 +5,10 @@
 **Implemented enhancements:**
 
 - Enable dependabot [\#22](https://github.com/renehernandez/camper/pull/22)
-- Retry for new access token [\#16](https://github.com/renehernandez/camper/pull/16)
 
 **Fixed bugs:**
 
 - Implement pagination according to basecamp 3 API [\#20](https://github.com/renehernandez/camper/issues/20)
-- Implement pagination according to Basecamp 3 API [\#26](https://github.com/renehernandez/camper/pull/26)
 
 **Merged pull requests:**
 
@@ -32,11 +30,16 @@
 - Add Comment API Module [\#19](https://github.com/renehernandez/camper/pull/19)
 - Refactor usage around the client object [\#18](https://github.com/renehernandez/camper/pull/18)
 
+**Fixed bugs:**
+
+- Implement pagination according to Basecamp 3 API [\#26](https://github.com/renehernandez/camper/pull/26)
+
 ## [v0.0.3](https://github.com/renehernandez/camper/tree/v0.0.3) (2020-07-26)
 
 **Implemented enhancements:**
 
 - Request a new access token once it expires [\#13](https://github.com/renehernandez/camper/issues/13)
+- Retry for new access token [\#16](https://github.com/renehernandez/camper/pull/16)
 
 **Fixed bugs:**
 
