@@ -5,6 +5,7 @@
 **Implemented enhancements:**
 
 - Enable dependabot [\#22](https://github.com/renehernandez/camper/pull/22)
+- Retry for new access token [\#16](https://github.com/renehernandez/camper/pull/16)
 
 **Fixed bugs:**
 
@@ -15,6 +16,7 @@
 
 - Update actions to point to main branch [\#34](https://github.com/renehernandez/camper/pull/34)
 - Apply renames for camper [\#33](https://github.com/renehernandez/camper/pull/33)
+- Bump rubocop-performance from 1.7.1 to 1.8.1 [\#32](https://github.com/renehernandez/camper/pull/32)
 - Bump rubocop from 0.89.1 to 0.91.0 [\#31](https://github.com/renehernandez/camper/pull/31)
 - Bump rubocop from 0.89.0 to 0.89.1 [\#28](https://github.com/renehernandez/camper/pull/28)
 - Bump rubocop from 0.88.0 to 0.89.0 [\#27](https://github.com/renehernandez/camper/pull/27)
@@ -35,7 +37,6 @@
 **Implemented enhancements:**
 
 - Request a new access token once it expires [\#13](https://github.com/renehernandez/camper/issues/13)
-- Retry for new access token [\#16](https://github.com/renehernandez/camper/pull/16)
 
 **Fixed bugs:**
 
