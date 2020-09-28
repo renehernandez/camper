@@ -63,11 +63,9 @@ module Camper
       @data.key?(method_name.to_s) ? @data[method_name.to_s] : super
     end
 
-    # rubocop:disable Style/OptionalBooleanParameter
     def respond_to_missing?(method_name, include_private = false)
       @hash.keys.map(&:to_sym).include?(method_name.to_sym) || super
     end
-    # rubocop:enable Style/OptionalBooleanParameter
 
     def self.detect_type(url)
       case url
