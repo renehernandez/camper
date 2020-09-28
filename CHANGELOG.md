@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased](https://github.com/renehernandez/camper/tree/HEAD)
+
+**Merged pull requests:**
+
+- Bump rubocop from 0.91.0 to 0.92.0 [\#36](https://github.com/renehernandez/camper/pull/36)
+
 ## [v0.0.5](https://github.com/renehernandez/camper/tree/v0.0.5) (2020-09-22)
 
 **Implemented enhancements:**
@@ -11,17 +17,12 @@
 - Implement pagination according to basecamp 3 API [\#20](https://github.com/renehernandez/camper/issues/20)
 - Implement pagination according to Basecamp 3 API [\#26](https://github.com/renehernandez/camper/pull/26)
 
-**Documentation:**
-
-- Update docs for retry [\#17](https://github.com/renehernandez/camper/pull/17)
-
 **Merged pull requests:**
 
 - Update actions to point to main branch [\#34](https://github.com/renehernandez/camper/pull/34)
 - Apply renames for camper [\#33](https://github.com/renehernandez/camper/pull/33)
 - Bump rubocop-performance from 1.7.1 to 1.8.1 [\#32](https://github.com/renehernandez/camper/pull/32)
 - Bump rubocop from 0.89.1 to 0.91.0 [\#31](https://github.com/renehernandez/camper/pull/31)
-- Bump rubocop from 0.89.0 to 0.89.1 [\#28](https://github.com/renehernandez/camper/pull/28)
 - Bump rubocop from 0.88.0 to 0.89.0 [\#27](https://github.com/renehernandez/camper/pull/27)
 - Bump rubocop-performance from 1.6.1 to 1.7.1 [\#25](https://github.com/renehernandez/camper/pull/25)
 - Bump rack-oauth2 from 1.14.0 to 1.16.0 [\#24](https://github.com/renehernandez/camper/pull/24)
@@ -49,8 +50,13 @@
 **Documentation:**
 
 - Initial documentation [\#5](https://github.com/renehernandez/camper/issues/5)
+- Update docs for retry [\#17](https://github.com/renehernandez/camper/pull/17)
 - Add section to categorize documentation changes [\#14](https://github.com/renehernandez/camper/pull/14)
 - Docs [\#10](https://github.com/renehernandez/camper/pull/10)
+
+**Merged pull requests:**
+
+- Bump rubocop from 0.89.0 to 0.89.1 [\#28](https://github.com/renehernandez/camper/pull/28)
 
 ## [v0.0.2](https://github.com/renehernandez/camper/tree/v0.0.2) (2020-07-07)
 
