@@ -65,7 +65,7 @@ module Camper
     private
 
     def new_request(method, path, options)
-      return Request.new(self, method, path, options)
+      Request.new(self, method, path, options)
     end
 
     def retry_request?(response, result)

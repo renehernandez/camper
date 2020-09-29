@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
-
 RSpec.describe Camper::Request do
   before do
     @client = Camper.configure do |config|

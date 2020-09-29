@@ -127,6 +127,8 @@ module Camper
     # Raised when API endpoint returns the HTTP status code 503.
     class ServiceUnavailable < ResponseError; end
 
+    class GatewayTimeout < ResponseError; end
+
     # HTTP status codes mapped to error classes.
     STATUS_MAPPINGS = {
       400 => BadRequest,
@@ -140,7 +142,8 @@ module Camper
       429 => TooManyRequests,
       500 => InternalServerError,
       502 => BadGateway,
-      503 => ServiceUnavailable
+      503 => ServiceUnavailable,
+      504 => GatewayTimeout
     }.freeze
   end
 end

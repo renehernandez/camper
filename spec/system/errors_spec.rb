@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 RSpec.describe Camper::Client do
-  before do 
+  before do
     @client = Camper.configure do |config|
       config.client_id = 'client_id'
       config.client_secret = 'client_secret'
@@ -7,7 +9,6 @@ RSpec.describe Camper::Client do
       config.refresh_token = 'refresh_token'
       config.access_token = 'access_token'
     end
-
   end
 
   it 'waits for Retry-After seconds to repeat the request' do
@@ -35,10 +36,10 @@ RSpec.describe Camper::Client do
     request = Camper::Request.new(@client, :get, '/url/path')
 
     allow(request).to receive(:validate).and_return(
-      [response, Camper::Request::Result::TOO_MANY_REQUESTS],
+      [response, Camper::Request::Result::TOO_MANY_REQUESTS]
     )
     allow(@client).to receive(:new_request).and_return(request)
 
-    expect{ @client.projects }.to raise_error(Camper::Error::TooManyRetries)
+    expect { @client.projects }.to raise_error(Camper::Error::TooManyRetries)
   end
 end

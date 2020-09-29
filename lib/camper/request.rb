@@ -5,7 +5,6 @@ require 'json'
 
 module Camper
   class Request
-
     include HTTParty
     include Logging
     format :json
@@ -20,6 +19,8 @@ module Camper
       ACCESS_TOKEN_EXPIRED = 'AccessTokenExpired'
 
       TOO_MANY_REQUESTS = 'TooManyRequests'
+
+      SERVER_ERROR = 'ServerError'
 
       VALID = 'Valid'
     end
@@ -65,6 +66,7 @@ module Camper
       endpoint, params = prepare_request_data
 
       raise Error::TooManyRetries, endpoint if maxed_attempts?
+
       @attempts += 1
 
       logger.debug("Method: #{@method}; URL: #{endpoint}")
@@ -76,7 +78,7 @@ module Camper
     end
 
     def maxed_attempts?
-      return @attempts >= MAX_RETRY_ATTEMPTS
+      @attempts >= MAX_RETRY_ATTEMPTS
     end
 
     private
