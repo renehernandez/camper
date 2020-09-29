@@ -4,13 +4,12 @@ require 'spec_helper'
 
 RSpec.describe Camper::Request do
   before do
-    @request = described_class.new('token', 'user-agent', Camper.client)
+    @client = Camper.configure do |config|
+      config.access_token = 'token'
+      config.user_agent = 'user-agent'
+    end
+    @request = described_class.new(@client, :get, '/url/path')
   end
-
-  it { expect(@request).to respond_to :get }
-  it { expect(@request).to respond_to :post }
-  it { expect(@request).to respond_to :put }
-  it { expect(@request).to respond_to :delete }
 
   describe '.default_options' do
     it 'has default values' do
@@ -33,7 +32,7 @@ RSpec.describe Camper::Request do
 
   describe '#authorization_header' do
     it 'raises MissingCredentials when access_token is not set' do
-      request = described_class.new('', 'user-agent', Camper.client)
+      request = described_class.new(Camper.client, :get, '/url/path')
       expect do
         request.send(:authorization_header)
       end.to raise_error(Camper::Error::MissingCredentials)

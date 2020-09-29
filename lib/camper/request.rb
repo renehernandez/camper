@@ -5,23 +5,33 @@ require 'json'
 
 module Camper
   class Request
+
     include HTTParty
     include Logging
     format :json
     headers 'Accept' => 'application/json', 'Content-Type' => 'application/json'
     parser(proc { |body, _| parse(body) })
 
+    attr_reader :attempts
+
+    MAX_RETRY_ATTEMPTS = 5
+
     module Result
       ACCESS_TOKEN_EXPIRED = 'AccessTokenExpired'
+
+      TOO_MANY_REQUESTS = 'TooManyRequests'
 
       VALID = 'Valid'
     end
 
-    def initialize(access_token, user_agent, client)
-      @access_token = access_token
+    def initialize(client, method, path, options = {})
       @client = client
+      @path = path
+      @options = options
+      @attempts = 0
+      @method = method
 
-      self.class.headers 'User-Agent' => user_agent
+      self.class.headers 'User-Agent' => @client.user_agent
     end
 
     # Converts the response body to a Resource.
@@ -50,32 +60,38 @@ module Camper
       raise Error::Parsing, 'The response is not a valid JSON'
     end
 
-    %w[get post put delete].each do |method|
-      define_method method do |path, options = {}|
-        params = options.dup
-        override_path = params.delete(:override_path)
+    # Executes the request
+    def execute
+      endpoint, params = prepare_request_data
 
-        params[:headers] ||= {}
+      raise Error::TooManyRetries, endpoint if maxed_attempts?
+      @attempts += 1
 
-        full_endpoint = override_path ? path : @client.api_endpoint + path
+      logger.debug("Method: #{@method}; URL: #{endpoint}")
 
-        execute_request(method, full_endpoint, params)
-      end
+      response, result = validate self.class.send(@method, endpoint, params)
+      response = extract_parsed(response) if result == Result::VALID
+
+      return response, result
+    end
+
+    def maxed_attempts?
+      return @attempts >= MAX_RETRY_ATTEMPTS
     end
 
     private
 
-    # Executes the request
-    def execute_request(method, endpoint, params)
+    def prepare_request_data
+      params = @options.dup
+      override_path = params.delete(:override_path)
+
+      params[:headers] ||= {}
       params[:headers].merge!(self.class.headers)
       params[:headers].merge!(authorization_header)
 
-      logger.debug("Method: #{method}; URL: #{endpoint}")
-      response, result = validate self.class.send(method, endpoint, params)
+      full_endpoint = override_path ? @path : @client.api_endpoint + @path
 
-      response = extract_parsed(response) if result == Result::VALID
-
-      return response, result
+      return full_endpoint, params
     end
 
     # Checks the response code for common errors.
@@ -90,9 +106,14 @@ module Camper
         return response, Result::ACCESS_TOKEN_EXPIRED
       end
 
+      if error_klass == Error::TooManyRequests
+        logger.debug('Too many request. Please check the Retry-After header for subsequent requests')
+        return response, Result::TOO_MANY_REQUESTS
+      end
+
       raise error_klass, response if error_klass
 
-      return response, Result::Valid
+      return response, Result::VALID
     end
 
     def extract_parsed(response)
@@ -108,9 +129,9 @@ module Camper
     #
     # @raise [Error::MissingCredentials] if access_token and auth_token are not set.
     def authorization_header
-      raise Error::MissingCredentials, 'Please provide a access_token' if @access_token.to_s.empty?
+      raise Error::MissingCredentials, 'Please provide a access_token' if @client.access_token.to_s.empty?
 
-      { 'Authorization' => "Bearer #{@access_token}" }
+      { 'Authorization' => "Bearer #{@client.access_token}" }
     end
   end
 end

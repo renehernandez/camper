@@ -23,7 +23,7 @@ module Camper
     attr_accessor(*VALID_OPTIONS_KEYS)
 
     def initialize(options = {})
-      options[:user_agent] ||= DEFAULT_USER_AGENT
+      default_from_environment
       VALID_OPTIONS_KEYS.each do |key|
         send("#{key}=", options[key]) if options[key]
       end
@@ -38,8 +38,8 @@ module Camper
 
     # rubocop:disable Metrics/AbcSize
     # Resets all configuration options to the defaults.
-    def reset
-      logger.debug 'Resetting attributes to default environment values'
+    def default_from_environment
+      logger.debug 'Setting attributes to default environment values'
       self.client_id      = ENV['BASECAMP3_CLIENT_ID']
       self.client_secret  = ENV['BASECAMP3_CLIENT_SECRET']
       self.redirect_uri   = ENV['BASECAMP3_REDIRECT_URI']
@@ -60,7 +60,7 @@ module Camper
 
     def api_endpoint
       raise Camper::Error::InvalidConfiguration, "missing basecamp account" unless self.account_number
-      
+
       "#{self.base_api_endpoint}/#{self.account_number}"
     end
 

@@ -6,7 +6,7 @@ module Camper
     Dir[File.expand_path('api/*.rb', __dir__)].each { |f| require f }
 
     extend Forwardable
-    
+
     def_delegators :@config, *(Configuration::VALID_OPTIONS_KEYS)
     def_delegators :@config, :authz_endpoint, :token_endpoint, :api_endpoint, :base_api_endpoint
 
@@ -27,13 +27,13 @@ module Camper
 
     %w[get post put delete].each do |method|
       define_method method do |path, options = {}|
-        response, result = new_request.send(method, path, options)
-        return response unless result == Request::Result::AccessTokenExpired
+        request = new_request(method, path, options)
 
-        update_access_token!
-
-        response, = new_request.send(method, path, options)
-        response
+        loop do
+          response, result = request.execute
+          logger.debug("Request result #{result}; Attempt: #{request.attempts}")
+          return response unless retry_request?(response, result)
+        end
       end
     end
 
@@ -64,8 +64,28 @@ module Camper
 
     private
 
-    def new_request
-      Request.new(@config.access_token, @config.user_agent, self)
+    def new_request(method, path, options)
+      return Request.new(self, method, path, options)
+    end
+
+    def retry_request?(response, result)
+      case result
+      when Request::Result::ACCESS_TOKEN_EXPIRED
+        update_access_token!
+        true
+      when Request::Result::TOO_MANY_REQUESTS
+        sleep_before_retrying(response)
+        true
+      else
+        false
+      end
+    end
+
+    def sleep_before_retrying(response)
+      time = response.headers['Retry-After'].to_i
+      logger.debug("Sleeping for #{time} seconds before retrying request")
+
+      sleep(time)
     end
 
     def only_show_last_four_chars(token)

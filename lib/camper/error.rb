@@ -14,6 +14,9 @@ module Camper
     # Raised when impossible to parse response body.
     class Parsing < Error; end
 
+    # Raised when too many attempts for the same request
+    class TooManyRetries < Error; end
+
     # Custom error class for rescuing from HTTP response errors.
     class ResponseError < Error
       POSSIBLE_MESSAGE_KEYS = %i[message error_description error].freeze
@@ -70,9 +73,6 @@ module Camper
         # Return stringified response when receiving a
         # parsing error to avoid obfuscation of the
         # api error.
-        #
-        # note: The Camper API does not always return valid
-        # JSON when there are errors.
         @response.to_s
       end
 
