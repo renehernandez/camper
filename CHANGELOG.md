@@ -2,6 +2,11 @@
 
 ## [Unreleased](https://github.com/renehernandez/camper/tree/HEAD)
 
+**Implemented enhancements:**
+
+- Implement handling error according to Basecamp 3 API specifications [\#21](https://github.com/renehernandez/camper/issues/21)
+- Error handling improvements [\#37](https://github.com/renehernandez/camper/pull/37)
+
 **Merged pull requests:**
 
 - Bump rubocop from 0.91.0 to 0.92.0 [\#36](https://github.com/renehernandez/camper/pull/36)
@@ -23,6 +28,7 @@
 - Apply renames for camper [\#33](https://github.com/renehernandez/camper/pull/33)
 - Bump rubocop-performance from 1.7.1 to 1.8.1 [\#32](https://github.com/renehernandez/camper/pull/32)
 - Bump rubocop from 0.89.1 to 0.91.0 [\#31](https://github.com/renehernandez/camper/pull/31)
+- Bump rubocop from 0.89.0 to 0.89.1 [\#28](https://github.com/renehernandez/camper/pull/28)
 - Bump rubocop from 0.88.0 to 0.89.0 [\#27](https://github.com/renehernandez/camper/pull/27)
 - Bump rubocop-performance from 1.6.1 to 1.7.1 [\#25](https://github.com/renehernandez/camper/pull/25)
 - Bump rack-oauth2 from 1.14.0 to 1.16.0 [\#24](https://github.com/renehernandez/camper/pull/24)
@@ -53,10 +59,6 @@
 - Update docs for retry [\#17](https://github.com/renehernandez/camper/pull/17)
 - Add section to categorize documentation changes [\#14](https://github.com/renehernandez/camper/pull/14)
 - Docs [\#10](https://github.com/renehernandez/camper/pull/10)
-
-**Merged pull requests:**
-
-- Bump rubocop from 0.89.0 to 0.89.1 [\#28](https://github.com/renehernandez/camper/pull/28)
 
 ## [v0.0.2](https://github.com/renehernandez/camper/tree/v0.0.2) (2020-07-07)
 
