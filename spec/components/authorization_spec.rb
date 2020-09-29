@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Camper::Authorization do
   before do
     @client = Camper.configure do |config|

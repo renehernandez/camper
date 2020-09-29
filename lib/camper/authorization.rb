@@ -38,7 +38,7 @@ module Camper
 
     def update_access_token!
       logger.debug "Update access token using refresh token"
-      
+
       client = authz_client
       client.refresh_token = @config.refresh_token
 

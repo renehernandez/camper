@@ -1,5 +1,6 @@
-RSpec.describe Camper::Configuration do
+# frozen_string_literal: true
 
+RSpec.describe Camper::Configuration do
   context 'using configure helper with all options' do
     before do
       @client = Camper.configure do |config|
@@ -45,15 +46,15 @@ RSpec.describe Camper::Configuration do
       expect(@client.account_number).to eq('000000')
     end
 
-    it 'sets the fixed authz endpoint' do 
+    it 'sets the fixed authz endpoint' do
       expect(@client.authz_endpoint).to eq('https://launchpad.37signals.com/authorization/new')
     end
 
-    it 'sets the fixed token endpoint' do 
+    it 'sets the fixed token endpoint' do
       expect(@client.token_endpoint).to eq('https://launchpad.37signals.com/authorization/token')
     end
 
-    it 'sets the api endpoint' do 
+    it 'sets the api endpoint' do
       expect(@client.api_endpoint).to eq('https://3.basecampapi.com/000000')
     end
   end

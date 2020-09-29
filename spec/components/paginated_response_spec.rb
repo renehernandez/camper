@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
-
 RSpec.describe Camper::PaginatedResponse do
   before do
     array = [1, 2, 3, 4]

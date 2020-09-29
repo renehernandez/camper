@@ -9,7 +9,7 @@ AllCops:
     - 'camper.gemspec'
 
 Layout/LineLength:
-  Max: 123
+  Max: 120
   Exclude:
     - 'lib/camper/client/*'
     - 'spec/**/*'

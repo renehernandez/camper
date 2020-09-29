@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Camper::Logging do
   before do
     @client = Camper.client

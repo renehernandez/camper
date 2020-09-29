@@ -14,6 +14,9 @@ module Camper
     # Raised when impossible to parse response body.
     class Parsing < Error; end
 
+    # Raised when too many attempts for the same request
+    class TooManyRetries < Error; end
+
     # Custom error class for rescuing from HTTP response errors.
     class ResponseError < Error
       POSSIBLE_MESSAGE_KEYS = %i[message error_description error].freeze
@@ -70,9 +73,6 @@ module Camper
         # Return stringified response when receiving a
         # parsing error to avoid obfuscation of the
         # api error.
-        #
-        # note: The Camper API does not always return valid
-        # JSON when there are errors.
         @response.to_s
       end
 
@@ -127,6 +127,8 @@ module Camper
     # Raised when API endpoint returns the HTTP status code 503.
     class ServiceUnavailable < ResponseError; end
 
+    class GatewayTimeout < ResponseError; end
+
     # HTTP status codes mapped to error classes.
     STATUS_MAPPINGS = {
       400 => BadRequest,
@@ -140,7 +142,8 @@ module Camper
       429 => TooManyRequests,
       500 => InternalServerError,
       502 => BadGateway,
-      503 => ServiceUnavailable
+      503 => ServiceUnavailable,
+      504 => GatewayTimeout
     }.freeze
   end
 end
