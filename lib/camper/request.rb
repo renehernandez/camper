@@ -20,8 +20,6 @@ module Camper
 
       TOO_MANY_REQUESTS = 'TooManyRequests'
 
-      SERVER_ERROR = 'ServerError'
-
       VALID = 'Valid'
     end
 
