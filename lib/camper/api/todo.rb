@@ -16,7 +16,7 @@ class Camper::Client
     end
 
     def create_todo(todolist, content, options={})
-      post(todolist.todos_url, body: {content: content, **options}, override_path: true)
+      post(todolist.todos_url, body: { content: content, **options }, override_path: true)
     end
 
     def complete_todo(todo)

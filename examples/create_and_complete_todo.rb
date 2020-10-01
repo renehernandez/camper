@@ -15,7 +15,7 @@ client.todos(todolist).auto_paginate do |todo|
   puts todo.title
 end
 
-todo = client.create_todo(todolist, 'TODO from camper', description: "This is a todo created with camper")
+todo = client.create_todo(todolist, 'TODO from camper', description: 'This is a todo created with camper')
 
 puts todo.title
 
