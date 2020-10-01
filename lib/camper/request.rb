@@ -85,9 +85,7 @@ module Camper
       params = @options.dup
       override_path = params.delete(:override_path)
 
-      if @method == 'post' && params.key?(:body)
-        params[:body] = params[:body].to_json
-      end
+      params[:body] = params[:body].to_json if body_to_json?
 
       params[:headers] ||= {}
       params[:headers].merge!(self.class.headers)
@@ -149,6 +147,10 @@ module Camper
       api_url = url.gsub('3.basecamp.com', '3.basecampapi.com')
       api_url.gsub!('.json', '')
       "#{api_url}.json"
+    end
+
+    def body_to_json?(params)
+      @method == 'post' && params.key?(:body)
     end
   end
 end

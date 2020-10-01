@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'camper'
 
 # It will configure the client using the basecamp environment variables
