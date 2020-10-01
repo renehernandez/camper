@@ -15,6 +15,7 @@
 
 **Merged pull requests:**
 
+- Rename add\_comment to create\_comment [\#40](https://github.com/renehernandez/camper/pull/40)
 - Bump rubocop from 0.91.0 to 0.92.0 [\#36](https://github.com/renehernandez/camper/pull/36)
 
 ## [v0.0.5](https://github.com/renehernandez/camper/tree/v0.0.5) (2020-09-22)
