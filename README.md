@@ -24,7 +24,9 @@ $ gem install camper
 
 ## Usage
 
-Getting a client and configuring it:
+### Configuration
+
+Getting a `client` and configuring it:
 
 ```ruby
 require 'camper'
@@ -32,32 +34,46 @@ require 'camper'
 client = Camper.client
 
 client.configure do |config|
-  config.client_id = ENV['BASEcamper_CLIENT_ID']
-  config.client_secret = ENV['BASEcamper_CLIENT_SECRET']
-  config.account_number = ENV['BASEcamper_ACCOUNT_NUMBER']
-  config.refresh_token = ENV['BASEcamper_REFRESH_TOKEN']
-  config.access_token = ENV['BASEcamper_ACCESS_TOKEN']
+  config.client_id = 'client_id'
+  config.client_secret = 'client_secret'
+  config.account_number = 'account_number'
+  config.refresh_token = 'refresh_token'
+  config.access_token = 'access_token'
 end
-
-projects = client.projects
 ```
 
-Alternatively, it is possible to invoke the top-level `#configure` method to get a client:
+Alternatively, it is possible to invoke the top-level `#configure` method to get a `client`:
 
 ```ruby
 require 'camper'
 
 client = Camper.configure do |config|
-  config.client_id = ENV['BASEcamper_CLIENT_ID']
-  config.client_secret = ENV['BASEcamper_CLIENT_SECRET']
-  config.account_number = ENV['BASEcamper_ACCOUNT_NUMBER']
-  config.refresh_token = ENV['BASEcamper_REFRESH_TOKEN']
-  config.access_token = ENV['BASEcamper_ACCESS_TOKEN']
+  config.client_id = 'client_id'
+  config.client_secret = 'client_secret'
+  config.account_number = 'account_number'
+  config.refresh_token = 'refresh_token'
+  config.access_token = 'access_token'
 end
-
-# gets a paginated response
-projects = client.projects
 ```
+
+Also, the `client` can read directly the following environment variables:
+
+* `BASECAMP_CLIENT_ID`
+* `BASECAMP_CLIENT_SECRET`
+* `BASECAMP_ACCOUNT_NUMBER`
+* `BASECAMP_REFRESH_TOKEN`
+* `BASECAMP_ACCESS_TOKEN`
+
+then the code would look like:
+
+```ruby
+require 'camper'
+
+client = Camper.client
+```
+
+
+### Examples
 
 Example getting list of TODOs:
 
@@ -65,11 +81,11 @@ Example getting list of TODOs:
 require 'camper'
 
 client = Camper.configure do |config|
-  config.client_id = ENV['BASEcamper_CLIENT_ID']
-  config.client_secret = ENV['BASEcamper_CLIENT_SECRET']
-  config.account_number = ENV['BASEcamper_ACCOUNT_NUMBER']
-  config.refresh_token = ENV['BASEcamper_REFRESH_TOKEN']
-  config.access_token = ENV['BASEcamper_ACCESS_TOKEN']
+  config.client_id = ENV['BASECAMP_CLIENT_ID']
+  config.client_secret = ENV['BASECAMP_CLIENT_SECRET']
+  config.account_number = ENV['BASECAMP_ACCOUNT_NUMBER']
+  config.refresh_token = ENV['BASECAMP_REFRESH_TOKEN']
+  config.access_token = ENV['BASECAMP_ACCESS_TOKEN']
 end
 
 # gets a paginated response

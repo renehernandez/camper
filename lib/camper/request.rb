@@ -85,11 +85,17 @@ module Camper
       params = @options.dup
       override_path = params.delete(:override_path)
 
+      if @method == 'post'
+        params[:body] = params[:body].to_json if params.key?(:body)
+      end
+
       params[:headers] ||= {}
       params[:headers].merge!(self.class.headers)
       params[:headers].merge!(authorization_header)
 
       full_endpoint = override_path ? @path : @client.api_endpoint + @path
+
+      full_endpoint = url_transform(full_endpoint)
 
       return full_endpoint, params
     end
@@ -132,6 +138,17 @@ module Camper
       raise Error::MissingCredentials, 'Please provide a access_token' if @client.access_token.to_s.empty?
 
       { 'Authorization' => "Bearer #{@client.access_token}" }
+    end
+
+    # Utility method for transforming Basecamp Web URLs into API URIs
+    # e.g 'https://3.basecamp.com/1/buckets/2/todos/3' will be 
+    # converted into 'https://3.basecampapi.com/1/buckets/2/todos/3.json'
+    #
+    # @return [String]
+    def url_transform(url)
+      api_url = url.gsub('3.basecamp.com', '3.basecampapi.com')
+      api_url.gsub!('.json', '')
+      api_url + '.json'
     end
   end
 end
