@@ -1,0 +1,4 @@
+--no-private
+lib/**/*.rb
+examples/*.rb - 
+README.md CONTRIBUTING.md CHANGELOG.md

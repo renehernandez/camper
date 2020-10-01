@@ -19,7 +19,7 @@ module Camper
     include ResourceAPI
     include TodoAPI
 
-    # Creates a new API.
+    # Creates a new Client instance.
     # @raise [Error:MissingCredentials]
     def initialize(options = {})
       @config = Configuration.new(options)
@@ -38,7 +38,8 @@ module Camper
     end
 
     # Allows setting configuration values for this client
-    # returns the client instance being configured
+    # by yielding the config object to the block
+    # @return [Camper::Client] the client instance being configured
     def configure
       yield @config
 
@@ -52,14 +53,6 @@ module Camper
       inspected = super
       inspected.sub! @config.access_token, only_show_last_four_chars(@config.access_token) if @config.access_token
       inspected
-    end
-
-    # Utility method for URL encoding of a string.
-    # Copied from https://ruby-doc.org/stdlib-2.7.0/libdoc/erb/rdoc/ERB/Util.html
-    #
-    # @return [String]
-    def url_encode(url)
-      url.to_s.b.gsub(/[^a-zA-Z0-9_\-.~]/n) { |m| sprintf('%%%02X', m.unpack1('C')) } # rubocop:disable Style/FormatString, Style/FormatStringToken
     end
 
     private
