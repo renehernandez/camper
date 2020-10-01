@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased](https://github.com/renehernandez/camper/tree/HEAD)
+## [v0.0.6](https://github.com/renehernandez/camper/tree/v0.0.6) (2020-10-01)
 
 **Implemented enhancements:**
 
@@ -30,6 +30,7 @@
 
 - Implement pagination according to basecamp 3 API [\#20](https://github.com/renehernandez/camper/issues/20)
 - Implement pagination according to Basecamp 3 API [\#26](https://github.com/renehernandez/camper/pull/26)
+- Remove unreleasedLabel field [\#15](https://github.com/renehernandez/camper/pull/15)
 
 **Merged pull requests:**
 
@@ -57,10 +58,6 @@
 
 - Request a new access token once it expires [\#13](https://github.com/renehernandez/camper/issues/13)
 - Retry for new access token [\#16](https://github.com/renehernandez/camper/pull/16)
-
-**Fixed bugs:**
-
-- Remove unreleasedLabel field [\#15](https://github.com/renehernandez/camper/pull/15)
 
 **Documentation:**
 
