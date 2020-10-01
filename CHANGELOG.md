@@ -5,10 +5,12 @@
 **Implemented enhancements:**
 
 - Implement handling error according to Basecamp 3 API specifications [\#21](https://github.com/renehernandez/camper/issues/21)
+- Add ability to complete a Todo [\#12](https://github.com/renehernandez/camper/issues/12)
 - Error handling improvements [\#37](https://github.com/renehernandez/camper/pull/37)
 
 **Merged pull requests:**
 
+- Multiple improvements [\#38](https://github.com/renehernandez/camper/pull/38)
 - Bump rubocop from 0.91.0 to 0.92.0 [\#36](https://github.com/renehernandez/camper/pull/36)
 
 ## [v0.0.5](https://github.com/renehernandez/camper/tree/v0.0.5) (2020-09-22)
@@ -57,7 +59,6 @@
 
 - Initial documentation [\#5](https://github.com/renehernandez/camper/issues/5)
 - Update docs for retry [\#17](https://github.com/renehernandez/camper/pull/17)
-- Add section to categorize documentation changes [\#14](https://github.com/renehernandez/camper/pull/14)
 - Docs [\#10](https://github.com/renehernandez/camper/pull/10)
 
 ## [v0.0.2](https://github.com/renehernandez/camper/tree/v0.0.2) (2020-07-07)
@@ -72,6 +73,10 @@
 **Fixed bugs:**
 
 - Added missing import [\#1](https://github.com/renehernandez/camper/pull/1)
+
+**Documentation:**
+
+- Add section to categorize documentation changes [\#14](https://github.com/renehernandez/camper/pull/14)
 
 ## [v0.0.1](https://github.com/renehernandez/camper/tree/v0.0.1) (2020-06-29)
 
