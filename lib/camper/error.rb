@@ -11,6 +11,8 @@ module Camper
     # Raised when API endpoint credentials not configured.
     class MissingCredentials < Error; end
 
+    class MissingBody < Error; end
+
     # Raised when impossible to parse response body.
     class Parsing < Error; end
 

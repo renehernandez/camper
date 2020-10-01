@@ -36,7 +36,6 @@ module Camper
       end
     end
 
-    # rubocop:disable Metrics/AbcSize
     # Resets all configuration options to the defaults.
     def default_from_environment
       logger.debug 'Setting attributes to default environment values'
@@ -48,7 +47,6 @@ module Camper
       self.access_token   = ENV['BASECAMP3_ACCESS_TOKEN']
       self.user_agent     = ENV['BASECAMP3_USER_AGENT'] || DEFAULT_USER_AGENT
     end
-    # rubocop:enable Metrics/AbcSize
 
     def authz_endpoint
       'https://launchpad.37signals.com/authorization/new'

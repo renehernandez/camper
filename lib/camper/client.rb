@@ -31,7 +31,7 @@ module Camper
 
         loop do
           response, result = request.execute
-          logger.debug("Request result #{result}; Attempt: #{request.attempts}")
+          logger.debug("Request result: #{result}; Attempt: #{request.attempts}")
           return response unless retry_request?(response, result)
         end
       end
@@ -90,17 +90,6 @@ module Camper
 
     def only_show_last_four_chars(token)
       "#{'*' * (token.size - 4)}#{token[-4..-1]}"
-    end
-
-    # Utility method for transforming Basecamp Web URLs into API URIs
-    # e.g 'https://3.basecamp.com/1/buckets/2/todos/3' will be 
-    # converted into 'https://3.basecampapi.com/1/buckets/2/todos/3.json'
-    #
-    # @return [String]
-    def url_transform(url)
-      api_uri = url.gsub('3.basecamp.com', '3.basecampapi.com')
-      api_uri += '.json' unless url.end_with? '.json'
-      api_uri
     end
   end
 end
