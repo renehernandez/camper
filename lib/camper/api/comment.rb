@@ -2,7 +2,7 @@
 
 class Camper::Client
   module CommentAPI
-    def add_comment(resource, content)
+    def create_comment(resource, content)
       post(resource.comments_url, override_path: true, body: { content: content })
     end
 
