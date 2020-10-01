@@ -51,7 +51,11 @@ class Camper::Client
     # @example
     #   client.create_todo(todolist, 'First Todo')
     # @example
-    #   client.create_todo(todolist, 'Program it', description: "<div><em>Try that new language!</em></div>, due_on: "2016-05-01")
+    #   client.create_todo(
+    #     todolist,
+    #     'Program it',
+    #     description: "<div><em>Try that new language!</em></div>, due_on: "2016-05-01"
+    #   )
     #
     # @param todolist [Resource] the todolist where the todo is going to be created
     # @param content [String] what the to-do is for
