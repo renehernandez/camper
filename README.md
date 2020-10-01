@@ -1,4 +1,4 @@
-# camper ![CI](https://github.com/renehernandez/camper/workflows/CI/badge.svg) [![Gem Version](https://badge.fury.io/rb/Camper.svg)](https://badge.fury.io/rb/camper)
+# camper ![CI](https://github.com/renehernandez/camper/workflows/CI/badge.svg) [![Gem Version](https://badge.fury.io/rb/camper.svg)](https://badge.fury.io/rb/camper)
 
 Camper is a Ruby wrapper for the [Basecamp 3 API](https://github.com/basecamp/bc3-api).
 
