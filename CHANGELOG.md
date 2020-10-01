@@ -11,6 +11,8 @@
 
 **Documentation:**
 
+- Enable documentation in RubyDoc [\#6](https://github.com/renehernandez/camper/issues/6)
+- Add yard documentation [\#41](https://github.com/renehernandez/camper/pull/41)
 - Fix gem badge [\#39](https://github.com/renehernandez/camper/pull/39)
 
 **Merged pull requests:**
