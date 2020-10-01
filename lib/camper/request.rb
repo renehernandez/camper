@@ -85,7 +85,7 @@ module Camper
       params = @options.dup
       override_path = params.delete(:override_path)
 
-      params[:body] = params[:body].to_json if body_to_json?
+      params[:body] = params[:body].to_json if body_to_json?(params)
 
       params[:headers] ||= {}
       params[:headers].merge!(self.class.headers)
