@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 module Camper
-  # Parses link header.
-  #
-  # @private
   class PaginationData
     include Logging
 

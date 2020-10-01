@@ -2,6 +2,8 @@
 
 Camper is a Ruby wrapper for the [Basecamp 3 API](https://github.com/basecamp/bc3-api).
 
+You can check out the gem documentation at [https://www.rubydoc.org/gems/camper](https://www.rubydoc.org/gems/camper)
+
 ## Installation
 
 Add this line to your application's Gemfile:
