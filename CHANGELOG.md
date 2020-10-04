@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased](https://github.com/renehernandez/camper/tree/HEAD)
+## [v0.0.7](https://github.com/renehernandez/camper/tree/v0.0.7) (2020-10-04)
 
 **Implemented enhancements:**
 
@@ -39,6 +39,7 @@
 - Bump rubocop from 0.89.1 to 0.91.0 [\#31](https://github.com/renehernandez/camper/pull/31)
 - Bump rubocop from 0.89.0 to 0.89.1 [\#28](https://github.com/renehernandez/camper/pull/28)
 - Bump rubocop from 0.88.0 to 0.89.0 [\#27](https://github.com/renehernandez/camper/pull/27)
+- Bump rubocop-performance from 1.6.1 to 1.7.1 [\#25](https://github.com/renehernandez/camper/pull/25)
 - Bump rack-oauth2 from 1.14.0 to 1.16.0 [\#24](https://github.com/renehernandez/camper/pull/24)
 - Bump rubocop from 0.86.0 to 0.88.0 [\#23](https://github.com/renehernandez/camper/pull/23)
 
@@ -67,10 +68,6 @@
 - Update docs for retry [\#17](https://github.com/renehernandez/camper/pull/17)
 - Add section to categorize documentation changes [\#14](https://github.com/renehernandez/camper/pull/14)
 - Docs [\#10](https://github.com/renehernandez/camper/pull/10)
-
-**Merged pull requests:**
-
-- Bump rubocop-performance from 1.6.1 to 1.7.1 [\#25](https://github.com/renehernandez/camper/pull/25)
 
 ## [v0.0.2](https://github.com/renehernandez/camper/tree/v0.0.2) (2020-07-07)
 
