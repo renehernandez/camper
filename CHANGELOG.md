@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased](https://github.com/renehernandez/camper/tree/HEAD)
+
+**Implemented enhancements:**
+
+- Raise error if resource can't be commented [\#45](https://github.com/renehernandez/camper/pull/45)
+
 ## [v0.0.7](https://github.com/renehernandez/camper/tree/v0.0.7) (2020-10-04)
 
 **Implemented enhancements:**
