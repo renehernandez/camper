@@ -12,12 +12,13 @@ module Camper
 
     # Keep in alphabetical order
     include Authorization
-    include CommentAPI
+    include CommentsAPI
     include Logging
-    include MessageAPI
-    include ProjectAPI
+    include MessagesAPI
+    include PeopleAPI
+    include ProjectsAPI
     include ResourceAPI
-    include TodoAPI
+    include TodosAPI
 
     # Creates a new Client instance.
     # @raise [Error:MissingCredentials]

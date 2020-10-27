@@ -15,6 +15,8 @@ module Camper
 
     class ResourceCannotBeCommented < Error; end
 
+    class RequestIsMissingParameters < Error; end
+
     # Raised when impossible to parse response body.
     class Parsing < Error; end
 
