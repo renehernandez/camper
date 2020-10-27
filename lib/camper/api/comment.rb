@@ -3,6 +3,8 @@
 class Camper::Client
   module CommentAPI
     def create_comment(resource, content)
+      raise Error::ResourceCannotBeCommented, resource unless resource.can_be_commented?
+
       post(resource.comments_url, override_path: true, body: { content: content })
     end
 
