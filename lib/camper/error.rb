@@ -13,6 +13,8 @@ module Camper
 
     class MissingBody < Error; end
 
+    class ResourceCannotBeCommented < Error; end
+
     # Raised when impossible to parse response body.
     class Parsing < Error; end
 
