@@ -2,9 +2,8 @@
 
 class Camper::Client
   module ProjectsAPI
-
     def projects(options = {})
-      get("/projects", options)
+      get('/projects', options)
     end
 
     def project(id)

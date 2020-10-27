@@ -4,7 +4,6 @@ class Camper::Client
   # Defines methods related to people.
   # @see ttps://github.com/basecamp/bc3-api/blob/master/sections/people.md
   module PeopleAPI
-
     # Get all people visible to the current user
     #
     # @example
@@ -41,7 +40,12 @@ class Camper::Client
     # @example
     #   client.update_access_in_project("8634", { revoke: [300, 12527] })
     # @example
-    #   client.update_access_in_project(my_project, { create: [{ name: "Victor Copper", email_address: "victor@hanchodesign.com" }]})
+    #   client.update_access_in_project(my_project, {
+    #     create: [{
+    #       name: "Victor Copper",
+    #       email_address: "victor@hanchodesign.com"
+    #     }]
+    #   })
     #
     # @param project [Resource|Integer|String] A project resource or a project id
     # @param options [Hash] options to update access, either grant, revoke or create new people
@@ -49,7 +53,7 @@ class Camper::Client
     # @raise [Error::RequestIsMissingParameters] if no option is specified
     # @see https://github.com/basecamp/bc3-api/blob/master/sections/people.md#update-who-can-access-a-project
     def update_access_in_project(project, options = {})
-      raise RequestIsMissingParameters, "options cannot be empty" if options.empty?
+      raise RequestIsMissingParameters, 'options cannot be empty' if options.empty?
 
       id = project.respond_to?(:id) ? project.id : project
 
