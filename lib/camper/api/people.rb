@@ -13,7 +13,7 @@ class Camper::Client
     # @return [Array<Resource>]
     # @see https://github.com/basecamp/bc3-api/blob/master/sections/people.md#get-all-people
     def people
-      get("/people")
+      get('/people')
     end
 
     # Get all active people on the project with the given ID
@@ -29,7 +29,7 @@ class Camper::Client
     # @return [Array<Resource>]
     # @see https://github.com/basecamp/bc3-api/blob/master/sections/people.md#get-people-on-a-project
     def people_in_project(project)
-      id = project.respond_to? :id ? project.id : project
+      id = project.respond_to?(:id) ? project.id : project
 
       get("/projects/#{id}/people")
     end
@@ -51,9 +51,9 @@ class Camper::Client
     def update_access_in_project(project, options = {})
       raise RequestIsMissingParameters, "options cannot be empty" if options.empty?
 
-      id = project.respond_to? :id ? project.id : project
+      id = project.respond_to?(:id) ? project.id : project
 
-      put("/projects/#{id}/people/users", body: { **options})
+      put("/projects/#{id}/people/users", body: { **options })
     end
 
     # Get all people on this Basecamp account who can be pinged
@@ -64,7 +64,7 @@ class Camper::Client
     # @return [Array<Resource>]
     # @see https://github.com/basecamp/bc3-api/blob/master/sections/people.md#get-pingable-people
     def pingable_people
-      get("/circles/people")
+      get('/circles/people')
     end
 
     # Get the profile for the user with the given ID
@@ -87,7 +87,7 @@ class Camper::Client
     # @return [Resource]
     # @see https://github.com/basecamp/bc3-api/blob/master/sections/people.md#get-my-personal-info
     def profile
-      get("/my/profile")
+      get('/my/profile')
     end
   end
 end
