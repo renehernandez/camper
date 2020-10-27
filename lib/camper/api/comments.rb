@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Camper::Client
-  module CommentAPI
+  module CommentsAPI
     def create_comment(resource, content)
       raise Error::ResourceCannotBeCommented, resource unless resource.can_be_commented?
 

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Camper::Client
-  module ProjectAPI
+  module ProjectsAPI
 
     def projects(options = {})
       get("/projects", options)

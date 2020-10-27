@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Camper::Client
-  module TodoAPI
+  module TodosAPI
 
     # Get the todolists associated with the todoset
     #

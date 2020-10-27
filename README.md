@@ -24,6 +24,18 @@ Or install it yourself as:
 $ gem install camper
 ```
 
+## Implemented API endpoints
+
+The up-to-date list of Basecamp API endpoints can be found at [here](https://github.com/basecamp/bc3-api#api-endpoints).
+
+Currently, Camper supports the following endpoints:
+
+* [Comments](https://github.com/basecamp/bc3-api/blob/master/sections/comments.md): Implementation at [comments.rb](./lib/camper/api/comments.rb) **Partial**
+* [Messages](https://github.com/basecamp/bc3-api/blob/master/sections/messages.md): Implementation at [messages.rb](./lib/camper/api/messages.rb) **Partial**
+* [People](https://github.com/basecamp/bc3-api/blob/master/sections/people.md): Implementation at [people.rb](./lib/camper/api/people.rb) **Complete**
+* [Projects](https://github.com/basecamp/bc3-api/blob/master/sections/projects.md): Implementation at [projects.rb](./lib/camper/api/projects.rb) **Partial**
+* [To-dos](https://github.com/basecamp/bc3-api/blob/master/sections/todos.md): Implementation at [todos.rb](./lib/camper/api/todos.rb) **Partial**
+
 ## Usage
 
 ### Configuration
