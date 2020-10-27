@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased](https://github.com/renehernandez/camper/tree/HEAD)
+## [v0.0.8](https://github.com/renehernandez/camper/tree/v0.0.8) (2020-10-27)
 
 **Implemented enhancements:**
 
@@ -38,6 +38,10 @@
 - Implement pagination according to basecamp 3 API [\#20](https://github.com/renehernandez/camper/issues/20)
 - Implement pagination according to Basecamp 3 API [\#26](https://github.com/renehernandez/camper/pull/26)
 
+**Documentation:**
+
+- Update docs for retry [\#17](https://github.com/renehernandez/camper/pull/17)
+
 **Merged pull requests:**
 
 - Update actions to point to main branch [\#34](https://github.com/renehernandez/camper/pull/34)
@@ -47,6 +51,7 @@
 - Bump rubocop from 0.89.0 to 0.89.1 [\#28](https://github.com/renehernandez/camper/pull/28)
 - Bump rubocop from 0.88.0 to 0.89.0 [\#27](https://github.com/renehernandez/camper/pull/27)
 - Bump rubocop-performance from 1.6.1 to 1.7.1 [\#25](https://github.com/renehernandez/camper/pull/25)
+- Bump rack-oauth2 from 1.14.0 to 1.16.0 [\#24](https://github.com/renehernandez/camper/pull/24)
 - Bump rubocop from 0.86.0 to 0.88.0 [\#23](https://github.com/renehernandez/camper/pull/23)
 
 ## [v0.0.4](https://github.com/renehernandez/camper/tree/v0.0.4) (2020-08-02)
@@ -56,10 +61,6 @@
 - Add Comments API module [\#11](https://github.com/renehernandez/camper/issues/11)
 - Add Comment API Module [\#19](https://github.com/renehernandez/camper/pull/19)
 - Refactor usage around the client object [\#18](https://github.com/renehernandez/camper/pull/18)
-
-**Merged pull requests:**
-
-- Bump rack-oauth2 from 1.14.0 to 1.16.0 [\#24](https://github.com/renehernandez/camper/pull/24)
 
 ## [v0.0.3](https://github.com/renehernandez/camper/tree/v0.0.3) (2020-07-26)
 
@@ -75,7 +76,6 @@
 **Documentation:**
 
 - Initial documentation [\#5](https://github.com/renehernandez/camper/issues/5)
-- Update docs for retry [\#17](https://github.com/renehernandez/camper/pull/17)
 - Add section to categorize documentation changes [\#14](https://github.com/renehernandez/camper/pull/14)
 - Docs [\#10](https://github.com/renehernandez/camper/pull/10)
 
