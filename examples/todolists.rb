@@ -27,6 +27,6 @@ projects.auto_paginate do |p|
   begin
     client.todolists(p)
   rescue Camper::Error::InvalidParameter
-    puts "Cannot use a project p to get the todolists"
+    puts 'Cannot use a project p to get the todolists'
   end
 end

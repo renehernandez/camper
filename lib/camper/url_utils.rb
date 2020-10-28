@@ -8,7 +8,7 @@ module Camper
 
       transformed_url = UrlUtils.transform(url)
 
-      transformed_url.match?(%r{#{Configuration.base_api_endpoint}\/\d+\/.*/})
+      transformed_url.match?(%r{#{Configuration.base_api_endpoint}/\d+/.*})
     end
 
     # Utility method for transforming Basecamp Web URLs into API URIs
