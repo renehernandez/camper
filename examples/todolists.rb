@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'camper'
 
 client = Camper.client
@@ -24,7 +26,7 @@ projects.auto_paginate do |p|
 
   begin
     client.todolists(p)
-  rescue Camper::Error::InvalidParameter => e
+  rescue Camper::Error::InvalidParameter
     puts "Cannot use a project p to get the todolists"
   end
 end

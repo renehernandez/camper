@@ -20,7 +20,7 @@ class Camper::Client
     def todos(todolist, options = {})
       url = todolist.todos_url
 
-      raise Camper::Error::InvalidParameter, todolist if !Camper::UrlUtils.basecamp_url?(url)
+      raise Camper::Error::InvalidParameter, todolist unless Camper::UrlUtils.basecamp_url?(url)
 
       get(url, options.merge(override_path: true))
     end
@@ -71,7 +71,7 @@ class Camper::Client
     def create_todo(todolist, content, options = {})
       url = todolist.todos_url
 
-      raise Camper::Error::InvalidParameter, todolist if !Camper::UrlUtils.basecamp_url?(url)
+      raise Camper::Error::InvalidParameter, todolist unless Camper::UrlUtils.basecamp_url?(url)
 
       post(url, body: { content: content, **options }, override_path: true)
     end
@@ -88,7 +88,7 @@ class Camper::Client
     def complete_todo(todo)
       url = todo.url
 
-      raise Camper::Error::InvalidParameter, todo if !Camper::UrlUtils.basecamp_url?(url)
+      raise Camper::Error::InvalidParameter, todo unless Camper::UrlUtils.basecamp_url?(url)
 
       post("#{url}/completion", override_path: true)
     end
@@ -105,7 +105,7 @@ class Camper::Client
     def uncomplete_todo(todo)
       url = todo.url
 
-      raise Camper::Error::InvalidParameter, todo if !Camper::UrlUtils.basecamp_url?(url)
+      raise Camper::Error::InvalidParameter, todo unless Camper::UrlUtils.basecamp_url?(url)
 
       delete("#{url}/completion", override_path: true)
     end
@@ -123,7 +123,7 @@ class Camper::Client
     # @see https://github.com/basecamp/bc3-api/blob/master/sections/todos.md#reposition-a-to-do
     def reposition_todo(todo, position)
       url = todo.url
-      raise Camper::Error::InvalidParameter, todo if !Camper::UrlUtils.basecamp_url?(url)
+      raise Camper::Error::InvalidParameter, todo unless Camper::UrlUtils.basecamp_url?(url)
 
       raise Camper::Error::InvalidParameter, position if position.to_i < 1
 

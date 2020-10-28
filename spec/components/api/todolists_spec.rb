@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Camper::Client::TodolistsAPI do
   before(:all) do
     @client = Camper.client
@@ -11,7 +13,7 @@ RSpec.describe Camper::Client::TodolistsAPI do
       it 'raises an error if todolists_url field is not a valid basecamp url' do
         todoset = test_class_todoset.new('https://twitter.com')
 
-        expect{ @client.todolists(todoset) }.to raise_error(Camper::Error::InvalidParameter)
+        expect { @client.todolists(todoset) }.to raise_error(Camper::Error::InvalidParameter)
       end
     end
 
@@ -19,7 +21,7 @@ RSpec.describe Camper::Client::TodolistsAPI do
       it 'raises an error if todolists_url field is not a valid basecamp url' do
         todoset = test_class_todoset.new('https://twitter.com')
 
-        expect{ @client.create_todolist(todoset, 'Hello World') }.to raise_error(Camper::Error::InvalidParameter)
+        expect { @client.create_todolist(todoset, 'Hello World') }.to raise_error(Camper::Error::InvalidParameter)
       end
     end
 
@@ -27,7 +29,7 @@ RSpec.describe Camper::Client::TodolistsAPI do
       it 'raises an error if todolists_url field is not a valid basecamp url' do
         todolist = test_class_todolist.new('https://twitter.com')
 
-        expect{ @client.update_todolist(todolist, 'Hello World') }.to raise_error(Camper::Error::InvalidParameter)
+        expect { @client.update_todolist(todolist, 'Hello World') }.to raise_error(Camper::Error::InvalidParameter)
       end
     end
   end

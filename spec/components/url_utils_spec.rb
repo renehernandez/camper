@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 RSpec.describe Camper::UrlUtils do
   context '.basecamp_url?' do
     it 'returns false if url param is empty' do
-      expect(described_class.basecamp_url?("")).to be false
+      expect(described_class.basecamp_url?('')).to be false
     end
 
     it 'returns false if url param is nil' do

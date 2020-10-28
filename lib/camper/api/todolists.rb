@@ -20,7 +20,7 @@ class Camper::Client
     def todolists(todoset, options = {})
       url = todoset.todolists_url
 
-      raise Camper::Error::InvalidParameter, todoset if !Camper::UrlUtils.basecamp_url?(url)
+      raise Camper::Error::InvalidParameter, todoset unless Camper::UrlUtils.basecamp_url?(url)
 
       get(url, options.merge(override_path: true))
     end
@@ -50,10 +50,10 @@ class Camper::Client
     # @raise [Error::InvalidParameter] if todolists_url field in todoset param
     #   is not a valid basecamp url
     # @see https://github.com/basecamp/bc3-api/blob/master/sections/todolists.md#create-a-to-do-list
-    def create_todolist(todoset, name, description="")
+    def create_todolist(todoset, name, description = '')
       url = todoset.todolists_url
 
-      raise Camper::Error::InvalidParameter, todoset if !Camper::UrlUtils.basecamp_url?(url)
+      raise Camper::Error::InvalidParameter, todoset unless Camper::UrlUtils.basecamp_url?(url)
 
       post(url, body: { name: name, description: description }, override_path: true)
     end
@@ -70,10 +70,10 @@ class Camper::Client
     # @raise [Error::InvalidParameter] if url field in todolist param
     #   is not a valid basecamp url
     # @see https://github.com/basecamp/bc3-api/blob/master/sections/todolists.md#update-a-to-do-list
-    def update_todolist(todolist, name, description="")
+    def update_todolist(todolist, name, description = '')
       url = todolist.url
 
-      raise Camper::Error::InvalidParameter, todolist if !Camper::UrlUtils.basecamp_url?(url)
+      raise Camper::Error::InvalidParameter, todolist unless Camper::UrlUtils.basecamp_url?(url)
 
       put(url, body: { name: name, description: description }, override_path: true)
     end

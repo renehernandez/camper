@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 module Camper
   # Defines methods related to url operations.
   module UrlUtils
     def self.basecamp_url?(url)
-      return false if url.nil? || !url.is_a?(String) || url == ""
+      return false if url.nil? || !url.is_a?(String) || url == ''
 
       transformed_url = UrlUtils.transform(url)
 
-      transformed_url.match?(/#{Configuration.base_api_endpoint}\/\d+\/.*/)
+      transformed_url.match?(%r{#{Configuration.base_api_endpoint}\/\d+\/.*/})
     end
 
     # Utility method for transforming Basecamp Web URLs into API URIs
