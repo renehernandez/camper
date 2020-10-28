@@ -18,6 +18,7 @@ module Camper
     include PeopleAPI
     include ProjectsAPI
     include ResourceAPI
+    include TodolistsAPI
     include TodosAPI
 
     # Creates a new Client instance.
