@@ -1,15 +1,15 @@
 RSpec.describe Camper::Client::TodolistsAPI do
   before(:all) do
     @client = Camper.client
-
-    TodolistsAPI_TestTodoset = Struct.new(:todolists_url)
-    TodolistsAPI_TestTodolist = Struct.new(:url)
   end
+
+  let(:test_class_todoset) { Struct.new(:todolists_url) }
+  let(:test_class_todolist) { Struct.new(:url) }
 
   context 'errors' do
     context '#todolists' do
       it 'raises an error if todolists_url field is not a valid basecamp url' do
-        todoset = TodolistsAPI_TestTodoset.new('https://twitter.com')
+        todoset = test_class_todoset.new('https://twitter.com')
 
         expect{ @client.todolists(todoset) }.to raise_error(Camper::Error::InvalidParameter)
       end
@@ -17,7 +17,7 @@ RSpec.describe Camper::Client::TodolistsAPI do
 
     context '#create_todolist' do
       it 'raises an error if todolists_url field is not a valid basecamp url' do
-        todoset = TodolistsAPI_TestTodoset.new('https://twitter.com')
+        todoset = test_class_todoset.new('https://twitter.com')
 
         expect{ @client.create_todolist(todoset, 'Hello World') }.to raise_error(Camper::Error::InvalidParameter)
       end
@@ -25,7 +25,7 @@ RSpec.describe Camper::Client::TodolistsAPI do
 
     context '#update_todolist' do
       it 'raises an error if todolists_url field is not a valid basecamp url' do
-        todolist = TodolistsAPI_TestTodolist.new('https://twitter.com')
+        todolist = test_class_todolist.new('https://twitter.com')
 
         expect{ @client.update_todolist(todolist, 'Hello World') }.to raise_error(Camper::Error::InvalidParameter)
       end
