@@ -1,35 +1,9 @@
 # frozen_string_literal: true
 
 class Camper::Client
+  # Defines methods related to todos.
+  # @see https://github.com/basecamp/bc3-api/blob/master/sections/todos.md
   module TodosAPI
-    # Get the todolists associated with the todoset
-    #
-    # @example
-    #   client.todolists(todoset)
-    # @example
-    #   client.todolists(todoset, status: 'archived')
-    #
-    # @param todoset [Resource] the parent todoset resource
-    # @param options [Hash] extra options to filter the list of todolist
-    # @return [Array<Resource>]
-    # @see https://github.com/basecamp/bc3-api/blob/master/sections/todolists.md#get-to-do-lists
-    def todolists(todoset, options = {})
-      get(todoset.todolists_url, options.merge(override_path: true))
-    end
-
-    # Get a todolist with a given id
-    #
-    # @example
-    #   client.todolist(todoset, '2345')
-    #
-    # @param todoset [Resource] the parent todoset resource
-    # @param id [Integer, String] the id of the todolist to get
-    # @return [Resource]
-    # @see https://github.com/basecamp/bc3-api/blob/master/sections/todolists.md#get-a-to-do-list
-    def todolist(todoset, id)
-      get("/buckets/#{todoset.bucket.id}/todolists/#{id}")
-    end
-
     # Get the todos in a todolist
     #
     # @example
@@ -40,9 +14,40 @@ class Camper::Client
     # @param todolist [Resource] the parent todoset resource
     # @param options [Hash] options to filter the list of todos
     # @return [Resource]
+    # @raise [Error::InvalidParameter] if todos_url field in todolist param
+    #   is not a valid basecamp url
     # @see https://github.com/basecamp/bc3-api/blob/master/sections/todos.md#get-to-dos
     def todos(todolist, options = {})
-      get(todolist.todos_url, options.merge(override_path: true))
+      url = todolist.todos_url
+
+      raise Camper::Error::InvalidParameter, todolist unless Camper::UrlUtils.basecamp_url?(url)
+
+      get(url, options.merge(override_path: true))
+    end
+
+    # Get a todo with a given id using a particular parent resource.
+    #
+    # @example
+    #   client.todo(my_project, '10')
+    # @example
+    #   client.todo(new_todolist, 134)
+    # @example
+    #   client.todo(67543, '2440')
+    #
+    # @param parent [Integer|String|Project|Resource] can be either a project id, a project or a todolist resource
+    # @param id [Integer|String] id of the todo
+    # @return [Resource]
+    # @see https://github.com/basecamp/bc3-api/blob/master/sections/todos.md#get-a-to-do
+    def todo(parent, id)
+      bucket_id = parent
+
+      if parent.is_a? Camper::Project
+        bucket_id = parent.id
+      elsif parent.respond_to?(:type)
+        bucket_id = parent.bucket.id
+      end
+
+      get("/buckets/#{bucket_id}/todos/#{id}")
     end
 
     # Create a todo within a todolist
@@ -60,9 +65,15 @@ class Camper::Client
     # @param content [String] what the to-do is for
     # @param options [Hash] extra configuration for the todo such as due_date and description
     # @return [Resource]
+    # @raise [Error::InvalidParameter] if todos_url field in todolist param
+    #   is not a valid basecamp url
     # @see https://github.com/basecamp/bc3-api/blob/master/sections/todos.md#create-a-to-do
     def create_todo(todolist, content, options = {})
-      post(todolist.todos_url, body: { content: content, **options }, override_path: true)
+      url = todolist.todos_url
+
+      raise Camper::Error::InvalidParameter, todolist unless Camper::UrlUtils.basecamp_url?(url)
+
+      post(url, body: { content: content, **options }, override_path: true)
     end
 
     # Complete a todo
@@ -71,9 +82,52 @@ class Camper::Client
     #   client.complete_todo(todo)
     #
     # @param todo [Resource] the todo to be marked as completed
+    # @raise [Error::InvalidParameter] if url field in todo param
+    #   is not a valid basecamp url
     # @see https://github.com/basecamp/bc3-api/blob/master/sections/todos.md#complete-a-to-do
     def complete_todo(todo)
-      post("#{todo.url}/completion", override_path: true)
+      url = todo.url
+
+      raise Camper::Error::InvalidParameter, todo unless Camper::UrlUtils.basecamp_url?(url)
+
+      post("#{url}/completion", override_path: true)
+    end
+
+    # Uncomplete a todo
+    #
+    # @example
+    #   client.uncomplete_todo(todo)
+    #
+    # @param todo [Resource] the todo to be marked as uncompleted
+    # @raise [Error::InvalidParameter] if url field in todo param
+    #   is not a valid basecamp url
+    # @see https://github.com/basecamp/bc3-api/blob/master/sections/todos.md#uncomplete-a-to-do
+    def uncomplete_todo(todo)
+      url = todo.url
+
+      raise Camper::Error::InvalidParameter, todo unless Camper::UrlUtils.basecamp_url?(url)
+
+      delete("#{url}/completion", override_path: true)
+    end
+
+    # Reposition a todo
+    #
+    # @example
+    #   client.uncomplete_todo(todo)
+    #
+    # @param todo [Resource] the todo to be repositioned
+    # @param position [Integer|String] new position for the todo
+    # @raise [Error::InvalidParameter] if url field in todo param
+    #   is not a valid basecamp url
+    # @raise [Error::InvalidParameter] if position param is less than 1
+    # @see https://github.com/basecamp/bc3-api/blob/master/sections/todos.md#reposition-a-to-do
+    def reposition_todo(todo, position)
+      url = todo.url
+      raise Camper::Error::InvalidParameter, todo unless Camper::UrlUtils.basecamp_url?(url)
+
+      raise Camper::Error::InvalidParameter, position if position.to_i < 1
+
+      put("#{url}/position", position: position, override_path: true)
     end
   end
 end
