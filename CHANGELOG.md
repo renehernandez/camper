@@ -2,6 +2,10 @@
 
 ## [Unreleased](https://github.com/renehernandez/camper/tree/HEAD)
 
+**Implemented enhancements:**
+
+- Split todos and todolists APIs [\#47](https://github.com/renehernandez/camper/pull/47)
+
 **Merged pull requests:**
 
 - Bump rubocop from 0.92.0 to 1.0.0 [\#44](https://github.com/renehernandez/camper/pull/44)
@@ -42,6 +46,7 @@
 **Fixed bugs:**
 
 - Implement pagination according to basecamp 3 API [\#20](https://github.com/renehernandez/camper/issues/20)
+- Implement pagination according to Basecamp 3 API [\#26](https://github.com/renehernandez/camper/pull/26)
 
 **Merged pull requests:**
 
@@ -62,10 +67,6 @@
 - Add Comments API module [\#11](https://github.com/renehernandez/camper/issues/11)
 - Add Comment API Module [\#19](https://github.com/renehernandez/camper/pull/19)
 - Refactor usage around the client object [\#18](https://github.com/renehernandez/camper/pull/18)
-
-**Fixed bugs:**
-
-- Implement pagination according to Basecamp 3 API [\#26](https://github.com/renehernandez/camper/pull/26)
 
 ## [v0.0.3](https://github.com/renehernandez/camper/tree/v0.0.3) (2020-07-26)
 
