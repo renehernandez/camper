@@ -23,6 +23,20 @@ RSpec.describe Camper::Client::TodosAPI do
 
         expect { @client.create_todo(todolist, 'Hello World') }.to raise_error(Camper::Error::InvalidParameter)
       end
+
+      it 'raises an error if content parameter is blank' do
+        todolist = test_class_todolist.new('https://3.basecamp.com/1234/todolists/1/todos.json')
+
+        expect { @client.create_todo(todolist, '') }.to raise_error(Camper::Error::InvalidParameter)
+      end
+    end
+
+    context '#update_todo' do
+      it 'raises an error if todos_url field is not a valid basecamp url' do
+        todo = test_class_todo.new('https://twitter.com')
+
+        expect { @client.update_todo(todo, {}) }.to raise_error(Camper::Error::InvalidParameter)
+      end
     end
 
     context '#complete_todo' do
