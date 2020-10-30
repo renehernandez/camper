@@ -6,6 +6,13 @@ RSpec.describe Camper::Client::ProjectsAPI do
   end
 
   context 'errors' do
+    context '#project' do 
+      it 'raises an error if id is blank' do
+        expect { @client.project('') }.to raise_error(Camper::Error::InvalidParameter)
+        expect { @client.project(nil) }.to raise_error(Camper::Error::InvalidParameter)
+      end
+    end
+
     context '#create_project' do
       it 'raises an error if name field is blank' do
         expect { @client.create_project('') }.to raise_error(Camper::Error::InvalidParameter)

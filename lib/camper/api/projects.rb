@@ -27,8 +27,11 @@ class Camper::Client
     #
     # @param id [Integet|String] id of the project to retrieve
     # @return [Project]
+    # @raise [Error::InvalidParameter] if id is blank (nil or empty string)
     # @see https://github.com/basecamp/bc3-api/blob/master/sections/projects.md#get-a-project
     def project(id)
+      raise Camper::Error::InvalidParameter, id if id.blank?
+
       get("/projects/#{id}")
     end
 
@@ -42,6 +45,7 @@ class Camper::Client
     # @param name [String] name of the project to create
     # @param description [String] description of the project
     # @return [Project]
+    # @raise [Error::InvalidParameter] if name is blank (nil or empty string)
     # @see https://github.com/basecamp/bc3-api/blob/master/sections/projects.md#create-a-project
     def create_project(name, description = '')
       raise Camper::Error::InvalidParameter, name if name.blank?
@@ -94,9 +98,7 @@ class Camper::Client
     # @raise [Error::InvalidParameter] if project param is blank
     # @see https://github.com/basecamp/bc3-api/blob/master/sections/projects.md#trash-a-project
     def delete_project(project)
-      if project.blank?
-        raise Camper::Error::InvalidParameter, 'project cannot be blank'
-      end
+      raise Camper::Error::InvalidParameter, 'project cannot be blank' if project.blank?
 
       id = project.respond_to?(:id) ? project.id : project
 
