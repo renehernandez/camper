@@ -12,7 +12,7 @@ class Camper::Client
       notify
       due_on
       starts_on
-    ]
+    ].freeze
 
     # Get the todos in a todolist
     #
