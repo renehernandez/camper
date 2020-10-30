@@ -1,7 +1,8 @@
 PATH
   remote: .
   specs:
-    camper (0.0.8)
+    camper (0.0.9)
+      concurrent-ruby (~> 1.1)
       httparty (~> 0.18)
       rack-oauth2 (~> 1.14)
 
@@ -87,7 +88,7 @@ GEM
       thread_safe (~> 0.1)
     unicode-display_width (1.7.0)
     yard (0.9.25)
-    zeitwerk (2.4.0)
+    zeitwerk (2.4.1)
 
 PLATFORMS
   ruby
