@@ -4,6 +4,16 @@ class Camper::Client
   # Defines methods related to todos.
   # @see https://github.com/basecamp/bc3-api/blob/master/sections/todos.md
   module TodosAPI
+    PARAMETERS = %w[
+      content
+      description
+      assignee_ids
+      completion_subscriber_ids
+      notify
+      due_on
+      starts_on
+    ].freeze
+
     # Get the todos in a todolist
     #
     # @example
@@ -63,17 +73,50 @@ class Camper::Client
     #
     # @param todolist [Resource] the todolist where the todo is going to be created
     # @param content [String] what the to-do is for
-    # @param options [Hash] extra configuration for the todo such as due_date and description
+    # @param options [Hash] extra parameters for the todo such as due_date and description
     # @return [Resource]
     # @raise [Error::InvalidParameter] if todos_url field in todolist param
     #   is not a valid basecamp url
+    # @raise [Error::InvalidParameter] if content parameter is blank
     # @see https://github.com/basecamp/bc3-api/blob/master/sections/todos.md#create-a-to-do
     def create_todo(todolist, content, options = {})
       url = todolist.todos_url
 
       raise Camper::Error::InvalidParameter, todolist unless Camper::UrlUtils.basecamp_url?(url)
+      raise Camper::Error::InvalidParameter, content if content.blank?
 
       post(url, body: { content: content, **options }, override_path: true)
+    end
+
+    # Update a todo.
+    #
+    # @example
+    #   client.update_todo(todo, 'Todo')
+    # @example
+    #   client.update_todo(
+    #     todo,
+    #     'Program it',
+    #     description: "<div><em>Try that new language!</em></div>,
+    #     due_on: "2016-05-01",
+    #     starts_on: "2016-04-30"
+    #   )
+    #
+    # @param todo [Resource] the todo to be updated
+    # @param options [Hash] parameters to be changed. The ones that are not specified
+    #   will be set to the current values of the todo object
+    # @return [Resource]
+    # @raise [Error::InvalidParameter] if url field in todo param
+    #   is not a valid basecamp url
+    # @see https://github.com/basecamp/bc3-api/blob/master/sections/todos.md#update-a-to-do
+    def update_todo(todo, options)
+      url = todo.url
+
+      raise Camper::Error::InvalidParameter, url unless Camper::UrlUtils.basecamp_url?(url)
+
+      body = {}.merge(options)
+      PARAMETERS.each { |p| body[p.to_sym] = todo[p] unless key_is_present?(body, p) }
+
+      put(url, body: body, override_path: true)
     end
 
     # Complete a todo
@@ -128,6 +171,12 @@ class Camper::Client
       raise Camper::Error::InvalidParameter, position if position.to_i < 1
 
       put("#{url}/position", position: position, override_path: true)
+    end
+
+    private
+
+    def key_is_present?(hash, key)
+      hash.key?(key.to_sym) || hash.key?(key.to_s)
     end
   end
 end

@@ -10,6 +10,8 @@ end
 
 projects = client.projects
 
+selected_todo = nil
+
 projects.auto_paginate do |p|
   puts "Project: #{p.name}"
 
@@ -25,6 +27,10 @@ projects.auto_paginate do |p|
       puts "Get Todo using project id: #{client.todo(p.id, todo.id).title}"
       puts "Get Todo using project resource: #{client.todo(p, todo.id).title}"
       puts "Get Todo using todolist resource: #{client.todo(list, todo.id).title}"
+
+      selected_todo = todo
     end
   end
 end
+
+client.update_todo(selected_todo, { description: 'New Description' })
