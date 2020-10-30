@@ -69,7 +69,7 @@ class Camper::Client
     # @see https://github.com/basecamp/bc3-api/blob/master/sections/projects.md#update-a-project
     def update_project(project, name: '', description: nil)
       if name.blank? && description.blank?
-        raise Camper::Error::InvalidParameter, "name and description cannot both be blank"
+        raise Camper::Error::InvalidParameter, 'name and description cannot both be blank'
       end
 
       id = project.respond_to?(:id) ? project.id : project
@@ -95,7 +95,7 @@ class Camper::Client
     # @see https://github.com/basecamp/bc3-api/blob/master/sections/projects.md#trash-a-project
     def delete_project(project)
       if project.blank?
-        raise Camper::Error::InvalidParameter, "project cannot be blank"
+        raise Camper::Error::InvalidParameter, 'project cannot be blank'
       end
 
       id = project.respond_to?(:id) ? project.id : project

@@ -139,7 +139,7 @@ module Camper
     end
 
     def body_to_json?(params)
-      ['post', 'put'].include?(@method) && params.key?(:body)
+      %w{post put}.include?(@method) && params.key?(:body)
     end
   end
 end

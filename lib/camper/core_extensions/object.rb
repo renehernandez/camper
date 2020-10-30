@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 # Copied from https://github.com/rails/rails/blob/master/activesupport/lib/active_support/core_ext/object/blank.rb
 
-require "concurrent/map"
+require 'concurrent/map'
 
 class Object
   # An object is blank if it's false, empty, or a whitespace string.
