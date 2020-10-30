@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased](https://github.com/renehernandez/camper/tree/HEAD)
+
+**Implemented enhancements:**
+
+- Complete projects api [\#51](https://github.com/renehernandez/camper/pull/51)
+
 ## [v0.0.9](https://github.com/renehernandez/camper/tree/v0.0.9) (2020-10-28)
 
 **Implemented enhancements:**
