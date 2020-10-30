@@ -1,5 +1,12 @@
 # Changelog
 
+## [Unreleased](https://github.com/renehernandez/camper/tree/HEAD)
+
+**Implemented enhancements:**
+
+- To-do API is missing update\_todo endpoint [\#49](https://github.com/renehernandez/camper/issues/49)
+- Add update\_todo implementation [\#52](https://github.com/renehernandez/camper/pull/52)
+
 ## [v0.0.10](https://github.com/renehernandez/camper/tree/v0.0.10) (2020-10-30)
 
 **Implemented enhancements:**
