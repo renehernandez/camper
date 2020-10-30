@@ -8,3 +8,4 @@ current_user = client.profile
 
 puts "Current User:\n#{current_user.inspect}"
 
+puts "People:\n#{client.people.inspect}"
