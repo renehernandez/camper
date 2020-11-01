@@ -44,7 +44,7 @@ module Camper
     # by yielding the config object to the block
     # @return [Camper::Client] the client instance being configured
     def configure
-      yield @config unless !block_given?
+      yield @config if block_given?
 
       self
     end
