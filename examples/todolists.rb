@@ -41,4 +41,10 @@ projects.auto_paginate do |p|
       client.complete_todo(todo)
     end
   end
+
+  puts 'Create a new todolist'
+  new_list = client.create_todolist(todoset, 'Temporary list')
+  puts "Todolist title: #{new_list.title}"
+  puts 'Trash list'
+  client.trash_todolist(new_list)
 end

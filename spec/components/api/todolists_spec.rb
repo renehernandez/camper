@@ -6,7 +6,7 @@ RSpec.describe Camper::Client::TodolistsAPI do
   end
 
   let(:test_class_todoset) { Struct.new(:todolists_url) }
-  let(:test_class_todolist) { Struct.new(:url) }
+  let(:test_class_todolist) { Struct.new(:url, :type) }
 
   context 'errors' do
     context '#todolists' do
@@ -30,6 +30,14 @@ RSpec.describe Camper::Client::TodolistsAPI do
         todolist = test_class_todolist.new('https://twitter.com')
 
         expect { @client.update_todolist(todolist, 'Hello World') }.to raise_error(Camper::Error::InvalidParameter)
+      end
+    end
+
+    context '#trash_todolist' do
+      it 'raises an error if type field is not a valid type' do
+        todolist = test_class_todolist.new('https://3.basecamp.com/1234/projects', 'Project')
+
+        expect { @client.trash_todolist(todolist) }.to raise_error(Camper::Error::InvalidParameter)
       end
     end
   end
