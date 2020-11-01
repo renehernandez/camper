@@ -6,7 +6,7 @@ RSpec.describe Camper::Client::TodosAPI do
   end
 
   let(:test_class_todolist) { Struct.new(:todos_url) }
-  let(:test_class_todo) { Struct.new(:url) }
+  let(:test_class_todo) { Struct.new(:url, :type) }
 
   context 'errors' do
     context '#todos' do
@@ -66,6 +66,20 @@ RSpec.describe Camper::Client::TodosAPI do
         todo = test_class_todo.new('https://3.basecamp.com/1234/projects')
 
         expect { @client.reposition_todo(todo, '0') }.to raise_error(Camper::Error::InvalidParameter)
+      end
+    end
+
+    context '#trash_todo' do
+      it 'raises an error if url field is not a valid basecamp url' do
+        todo = test_class_todo.new('https://twitter.com')
+
+        expect { @client.trash_todo(todo) }.to raise_error(Camper::Error::InvalidParameter)
+      end
+
+      it 'raises an error if type field is not a valid type' do
+        todo = test_class_todo.new('https://3.basecamp.com/1234/projects', 'Project')
+
+        expect { @client.trash_todo(todo) }.to raise_error(Camper::Error::InvalidParameter)
       end
     end
   end

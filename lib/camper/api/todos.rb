@@ -173,6 +173,22 @@ class Camper::Client
       put("#{url}/position", position: position, override_path: true)
     end
 
+    # Trash a todo
+    #   it calls the trash_recording endpoint under the hood
+    #
+    # @example
+    #   client.trash_todo(todo)
+    #
+    # @param todo [Resource] the todo to be trashed
+    # @raise [Error::InvalidParameter] if url field in todo param
+    #   is not a valid basecamp url
+    # @see https://github.com/basecamp/bc3-api/blob/master/sections/recordings.md#trash-a-recording
+    def trash_todo(todo)
+      raise Camper::Error::InvalidParameter, todo unless Camper::UrlUtils.basecamp_url?(todo.url)
+
+      trash_recording(todo)
+    end
+
     private
 
     def key_is_present?(hash, key)

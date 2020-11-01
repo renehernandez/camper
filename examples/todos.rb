@@ -30,6 +30,12 @@ projects.auto_paginate do |p|
 
       selected_todo = todo
     end
+
+    puts 'Create new todo'
+    new_todo = client.create_todo(list, 'new todo')
+    puts "New Todo title: #{new_todo.title}"
+    puts 'Trash new todo'
+    client.trash_todo(new_todo)
   end
 end
 
