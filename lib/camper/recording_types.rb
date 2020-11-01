@@ -12,8 +12,8 @@ module Camper
     TODOLIST = 'Todolist'
     UPLOAD = 'Upload'
 
-    # rubocop:disable Style/ClassVar
-    def self.all 
+    # rubocop:disable Style/ClassVars
+    def self.all
       @@recordings ||= constants(false).map { |c| const_get(c) }.sort
 
       @@recordings
