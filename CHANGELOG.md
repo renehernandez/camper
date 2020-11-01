@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased](https://github.com/renehernandez/camper/tree/HEAD)
+## [v0.0.11](https://github.com/renehernandez/camper/tree/v0.0.11) (2020-11-01)
 
 **Implemented enhancements:**
 
@@ -45,6 +45,7 @@
 **Implemented enhancements:**
 
 - Add people API [\#46](https://github.com/renehernandez/camper/pull/46)
+- Raise error if resource can't be commented [\#45](https://github.com/renehernandez/camper/pull/45)
 
 ## [v0.0.7](https://github.com/renehernandez/camper/tree/v0.0.7) (2020-10-04)
 
@@ -52,7 +53,6 @@
 
 - Implement handling error according to Basecamp 3 API specifications [\#21](https://github.com/renehernandez/camper/issues/21)
 - Add ability to complete a Todo [\#12](https://github.com/renehernandez/camper/issues/12)
-- Raise error if resource can't be commented [\#45](https://github.com/renehernandez/camper/pull/45)
 - Multiple improvements [\#38](https://github.com/renehernandez/camper/pull/38)
 - Error handling improvements [\#37](https://github.com/renehernandez/camper/pull/37)
 
