@@ -26,7 +26,7 @@ module Camper
       def recordings(type, options = {})
         raise Error::InvalidParameter, type unless RecordingTypes.all.include?(type)
 
-        get('/projects/recordings', options.merge(type: type))
+        get('/projects/recordings', query: options.merge(type: type))
       end
 
       # Trash a given recording
