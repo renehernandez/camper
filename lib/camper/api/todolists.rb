@@ -22,7 +22,7 @@ class Camper::Client
 
       raise Camper::Error::InvalidParameter, todoset unless Camper::UrlUtils.basecamp_url?(url)
 
-      get(url, options.merge(override_path: true))
+      get(url, query: options, override_path: true)
     end
 
     # Get a todolist with a given id

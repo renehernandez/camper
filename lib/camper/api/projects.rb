@@ -15,7 +15,7 @@ class Camper::Client
     # @return [Array<Project>]
     # @see https://github.com/basecamp/bc3-api/blob/master/sections/projects.md#get-all-projects
     def projects(options = {})
-      get('/projects', options)
+      get('/projects', query: options)
     end
 
     # Get a project with a given id, granted they have access to it

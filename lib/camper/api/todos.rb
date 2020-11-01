@@ -32,7 +32,7 @@ class Camper::Client
 
       raise Camper::Error::InvalidParameter, todolist unless Camper::UrlUtils.basecamp_url?(url)
 
-      get(url, options.merge(override_path: true))
+      get(url, query: options, override_path: true)
     end
 
     # Get a todo with a given id using a particular parent resource.
