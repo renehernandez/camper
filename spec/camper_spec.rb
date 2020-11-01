@@ -31,7 +31,7 @@ RSpec.describe Camper do
 
   describe '#configure' do
     it 'returns a Camper::Client' do
-      expect(described_class.configure {}).to be_a Camper::Client
+      expect(described_class.configure).to be_a Camper::Client
     end
   end
 end
