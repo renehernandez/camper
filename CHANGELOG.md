@@ -5,7 +5,9 @@
 **Implemented enhancements:**
 
 - Implement trash\_todo endpoint [\#58](https://github.com/renehernandez/camper/issues/58)
+- Implement trash\_todolist endpoint [\#57](https://github.com/renehernandez/camper/issues/57)
 - To-do API is missing update\_todo endpoint [\#49](https://github.com/renehernandez/camper/issues/49)
+- Add trash\_todolist endpoint [\#61](https://github.com/renehernandez/camper/pull/61)
 - Add trash\_todo endpoint implementation [\#60](https://github.com/renehernandez/camper/pull/60)
 - Add recordings api [\#53](https://github.com/renehernandez/camper/pull/53)
 - Add update\_todo implementation [\#52](https://github.com/renehernandez/camper/pull/52)
@@ -37,7 +39,7 @@
 
 **Implemented enhancements:**
 
-- Add people API [\#46](https://github.com/renehernandez/camper/pull/46)
+- Raise error if resource can't be commented [\#45](https://github.com/renehernandez/camper/pull/45)
 
 ## [v0.0.7](https://github.com/renehernandez/camper/tree/v0.0.7) (2020-10-04)
 
@@ -45,6 +47,7 @@
 
 - Implement handling error according to Basecamp 3 API specifications [\#21](https://github.com/renehernandez/camper/issues/21)
 - Add ability to complete a Todo [\#12](https://github.com/renehernandez/camper/issues/12)
+- Add people API [\#46](https://github.com/renehernandez/camper/pull/46)
 - Multiple improvements [\#38](https://github.com/renehernandez/camper/pull/38)
 - Error handling improvements [\#37](https://github.com/renehernandez/camper/pull/37)
 
@@ -63,7 +66,6 @@
 
 **Implemented enhancements:**
 
-- Raise error if resource can't be commented [\#45](https://github.com/renehernandez/camper/pull/45)
 - Enable dependabot [\#22](https://github.com/renehernandez/camper/pull/22)
 
 **Fixed bugs:**
