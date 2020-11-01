@@ -51,9 +51,11 @@ module Camper
 
     private
 
+    # rubocop:disable Lint/ToEnumArguments
     def lazy_paginate
       to_enum(:each_page).lazy.flat_map(&:to_ary)
     end
+    # rubocop:enable Lint/ToEnumArguments
 
     def each_page
       current = self
