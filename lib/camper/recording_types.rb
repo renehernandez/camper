@@ -2,7 +2,6 @@
 
 module Camper
   class RecordingTypes
-
     COMMENT = 'Comment'
     DOCUMENT = 'Document'
     MESSAGE = 'Message'
@@ -18,6 +17,6 @@ module Camper
 
       @@recordings
     end
-    # rubocop:enable Style/ClassVar
+    # rubocop:enable Style/ClassVars
   end
 end
