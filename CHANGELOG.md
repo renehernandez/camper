@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- Rewrite API modules to use module nesting [\#63](https://github.com/renehernandez/camper/pull/63)
 - Bump rubocop from 1.0.0 to 1.1.0 [\#48](https://github.com/renehernandez/camper/pull/48)
 
 ## [v0.0.11](https://github.com/renehernandez/camper/tree/v0.0.11) (2020-11-01)
