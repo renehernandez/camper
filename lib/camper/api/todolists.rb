@@ -77,5 +77,19 @@ class Camper::Client
 
       put(url, body: { name: name, description: description }, override_path: true)
     end
+
+    # Trash a todolist
+    #   it calls the trash_recording endpoint under the hood
+    #
+    # @example
+    #   client.trash_todolist(todolist)
+    #
+    # @param todolist [Resource] the todolist to be trashed
+    # @raise [Error::InvalidParameter] if the type field in todolist param
+    #   is not an allowed type in the recording API
+    # @see https://github.com/basecamp/bc3-api/blob/master/sections/recordings.md#trash-a-recording
+    def trash_todolist(todolist)
+      trash_recording(todolist)
+    end
   end
 end
