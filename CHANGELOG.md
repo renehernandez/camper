@@ -7,11 +7,12 @@
 - To-do API is missing update\_todo endpoint [\#49](https://github.com/renehernandez/camper/issues/49)
 - Add recordings api [\#53](https://github.com/renehernandez/camper/pull/53)
 - Add update\_todo implementation [\#52](https://github.com/renehernandez/camper/pull/52)
-- Raise error if resource can't be commented [\#45](https://github.com/renehernandez/camper/pull/45)
 
 **Fixed bugs:**
 
+- return tag should mention PaginatedResponse instead of Array [\#56](https://github.com/renehernandez/camper/issues/56)
 - Get endpoints params need to be set under query field [\#54](https://github.com/renehernandez/camper/issues/54)
+- Update endpoints documentation to use PaginatedResponse [\#59](https://github.com/renehernandez/camper/pull/59)
 - Fix query string generation in get endpoints [\#55](https://github.com/renehernandez/camper/pull/55)
 
 ## [v0.0.10](https://github.com/renehernandez/camper/tree/v0.0.10) (2020-10-30)
@@ -35,6 +36,7 @@
 **Implemented enhancements:**
 
 - Add people API [\#46](https://github.com/renehernandez/camper/pull/46)
+- Raise error if resource can't be commented [\#45](https://github.com/renehernandez/camper/pull/45)
 
 ## [v0.0.7](https://github.com/renehernandez/camper/tree/v0.0.7) (2020-10-04)
 
@@ -66,6 +68,10 @@
 
 - Implement pagination according to basecamp 3 API [\#20](https://github.com/renehernandez/camper/issues/20)
 - Implement pagination according to Basecamp 3 API [\#26](https://github.com/renehernandez/camper/pull/26)
+
+**Documentation:**
+
+- Update docs for retry [\#17](https://github.com/renehernandez/camper/pull/17)
 
 **Merged pull requests:**
 
@@ -101,7 +107,6 @@
 **Documentation:**
 
 - Initial documentation [\#5](https://github.com/renehernandez/camper/issues/5)
-- Update docs for retry [\#17](https://github.com/renehernandez/camper/pull/17)
 - Add section to categorize documentation changes [\#14](https://github.com/renehernandez/camper/pull/14)
 - Docs [\#10](https://github.com/renehernandez/camper/pull/10)
 
