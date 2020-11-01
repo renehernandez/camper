@@ -13,7 +13,7 @@ class Camper::Client
     #
     # @param todoset [Resource] the parent todoset resource
     # @param options [Hash] extra options to filter the list of todolist
-    # @return [Array<Resource>]
+    # @return [PaginatedResponse<Resource>]
     # @raise [Error::InvalidParameter] if todolists_url field in todoset param
     #   is not a valid basecamp url
     # @see https://github.com/basecamp/bc3-api/blob/master/sections/todolists.md#get-to-do-lists

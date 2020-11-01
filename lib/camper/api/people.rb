@@ -9,7 +9,7 @@ class Camper::Client
     # @example
     #   client.people
     #
-    # @return [Array<Resource>]
+    # @return [PaginatedResponse<Resource>]
     # @see https://github.com/basecamp/bc3-api/blob/master/sections/people.md#get-all-people
     def people
       get('/people')
@@ -25,7 +25,7 @@ class Camper::Client
     #   client.people_in_project(my_project)
     #
     # @param project [Resource|Integer|String] A project resource or a project id
-    # @return [Array<Resource>]
+    # @return [PaginatedResponse<Resource>]
     # @see https://github.com/basecamp/bc3-api/blob/master/sections/people.md#get-people-on-a-project
     def people_in_project(project)
       id = project.respond_to?(:id) ? project.id : project
@@ -65,7 +65,7 @@ class Camper::Client
     # @example
     #   client.pingable_people
     #
-    # @return [Array<Resource>]
+    # @return [PaginatedResponse<Resource>]
     # @see https://github.com/basecamp/bc3-api/blob/master/sections/people.md#get-pingable-people
     def pingable_people
       get('/circles/people')

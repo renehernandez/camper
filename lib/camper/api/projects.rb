@@ -12,7 +12,7 @@ class Camper::Client
     #   client.projects(status: 'trashed')
     #
     # @param options [Hash] extra options to filter the list of todolist
-    # @return [Array<Project>]
+    # @return [PaginatedResponse<Project>]
     # @see https://github.com/basecamp/bc3-api/blob/master/sections/projects.md#get-all-projects
     def projects(options = {})
       get('/projects', query: options)
