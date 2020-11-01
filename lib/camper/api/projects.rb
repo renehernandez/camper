@@ -73,9 +73,12 @@ module Camper
       # @raise [Error::InvalidParameter] if both name and description are blank (nil or empty strings)
       # @see https://github.com/basecamp/bc3-api/blob/master/sections/projects.md#update-a-project
       def update_project(project, name: '', description: nil)
+        # rubocop:disable Style/IfUnlessModifier:
         if name.blank? && description.blank?
           raise Error::InvalidParameter, 'name and description cannot both be blank'
         end
+
+        # rubocop:enable Style/IfUnlessModifier
 
         id = project.respond_to?(:id) ? project.id : project
 
