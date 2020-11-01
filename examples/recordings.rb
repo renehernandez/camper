@@ -7,5 +7,5 @@ recordings = client.recordings(
 )
 
 recordings.auto_paginate do |rec|
-  puts "Comment content: #{rec.content}"
+  puts "Todo content: #{rec.content}"
 end
