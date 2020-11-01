@@ -61,21 +61,29 @@ class Camper::Client
     # Update a todolist to change name and description
     #
     # @example
+    #   client.update_todolist(todolist, 'Launch')
+    # @example
     #   client.update_todolist(todolist, 'Launch', "<div><em>Finish it!</em></div>")
+    # @example
+    #   client.update_todolist(todolist, 'Launch', '')
     #
     # @param todolist [Resource] the todolist resource to update
     # @param name [String] the new name of the todolist
-    # @param description [String] a new optional description for the todolist
+    # @param description [String] a new optional description for the todolist. If not specified,
+    #   it will be set to the current description value
     # @return [Resource]
     # @raise [Error::InvalidParameter] if url field in todolist param
     #   is not a valid basecamp url
     # @see https://github.com/basecamp/bc3-api/blob/master/sections/todolists.md#update-a-to-do-list
-    def update_todolist(todolist, name, description = '')
+    def update_todolist(todolist, name, description = nil)
       url = todolist.url
 
       raise Camper::Error::InvalidParameter, todolist unless Camper::UrlUtils.basecamp_url?(url)
 
-      put(url, body: { name: name, description: description }, override_path: true)
+      body = { name: name }
+      body[:description] = description.nil? ? todolist.description : description
+
+      put(url, body: body, override_path: true)
     end
 
     # Trash a todolist
