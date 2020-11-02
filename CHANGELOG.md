@@ -4,6 +4,7 @@
 
 **Implemented enhancements:**
 
+- Complete messages and message types APIs [\#66](https://github.com/renehernandez/camper/pull/66)
 - Complete comments api [\#65](https://github.com/renehernandez/camper/pull/65)
 
 **Merged pull requests:**
