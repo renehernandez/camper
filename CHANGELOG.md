@@ -2,6 +2,10 @@
 
 ## [Unreleased](https://github.com/renehernandez/camper/tree/HEAD)
 
+**Implemented enhancements:**
+
+- Complete comments api [\#65](https://github.com/renehernandez/camper/pull/65)
+
 **Merged pull requests:**
 
 - Rewrite API modules to use module nesting [\#63](https://github.com/renehernandez/camper/pull/63)
