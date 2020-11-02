@@ -19,11 +19,7 @@ module Camper
       #   is not a valid basecamp url
       # @see https://github.com/basecamp/bc3-api/blob/master/sections/todolists.md#get-to-do-lists
       def todolists(todoset, options = {})
-        url = todoset.todolists_url
-
-        raise Error::InvalidParameter, todoset unless UrlUtils.basecamp_url?(url)
-
-        get(url, query: options, override_path: true)
+        get(todoset.todolists_url, query: options, override_path: true)
       end
 
       # Get a todolist with a given id
@@ -52,11 +48,9 @@ module Camper
       #   is not a valid basecamp url
       # @see https://github.com/basecamp/bc3-api/blob/master/sections/todolists.md#create-a-to-do-list
       def create_todolist(todoset, name, description = '')
-        url = todoset.todolists_url
+        body = { name: name, description: description }
 
-        raise Error::InvalidParameter, todoset unless UrlUtils.basecamp_url?(url)
-
-        post(url, body: { name: name, description: description }, override_path: true)
+        post(todoset.todolists_url, body: body, override_path: true)
       end
 
       # Update a todolist to change name and description
@@ -77,14 +71,10 @@ module Camper
       #   is not a valid basecamp url
       # @see https://github.com/basecamp/bc3-api/blob/master/sections/todolists.md#update-a-to-do-list
       def update_todolist(todolist, name, description = nil)
-        url = todolist.url
-
-        raise Error::InvalidParameter, todolist unless UrlUtils.basecamp_url?(url)
-
         body = { name: name }
         body[:description] = description.nil? ? todolist.description : description
 
-        put(url, body: body, override_path: true)
+        put(todolist.url, body: body, override_path: true)
       end
 
       # Trash a todolist
