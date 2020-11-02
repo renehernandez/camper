@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased](https://github.com/renehernandez/camper/tree/HEAD)
+## [v0.1.0](https://github.com/renehernandez/camper/tree/v0.1.0) (2020-11-02)
 
 **Implemented enhancements:**
 
