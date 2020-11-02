@@ -9,6 +9,7 @@
 
 **Merged pull requests:**
 
+- Refactor check for valid basecamp url [\#67](https://github.com/renehernandez/camper/pull/67)
 - Bump rspec from 3.9.0 to 3.10.0 [\#64](https://github.com/renehernandez/camper/pull/64)
 - Rewrite API modules to use module nesting [\#63](https://github.com/renehernandez/camper/pull/63)
 - Bump rubocop from 1.0.0 to 1.1.0 [\#48](https://github.com/renehernandez/camper/pull/48)
