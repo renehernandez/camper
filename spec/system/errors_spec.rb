@@ -5,7 +5,7 @@ RSpec.describe Camper::Client do
     @client = Camper.configure do |config|
       config.client_id = 'client_id'
       config.client_secret = 'client_secret'
-      config.account_number = 'account_number'
+      config.account_number = '00000000'
       config.refresh_token = 'refresh_token'
       config.access_token = 'access_token'
     end

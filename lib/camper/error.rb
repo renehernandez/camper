@@ -17,6 +17,8 @@ module Camper
 
     class RequestIsMissingParameters < Error; end
 
+    class InvalidURL < Error; end
+
     class InvalidParameter < Error; end
 
     # Raised when impossible to parse response body.

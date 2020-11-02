@@ -15,6 +15,9 @@ Layout/LineLength:
     - 'lib/camper/client/*'
     - 'spec/**/*'
 
+Layout/FirstHashElementIndentation:
+  EnforcedStyle: consistent
+
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'

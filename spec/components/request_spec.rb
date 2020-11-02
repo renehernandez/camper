@@ -9,6 +9,14 @@ RSpec.describe Camper::Request do
     @request = described_class.new(@client, :get, '/url/path')
   end
 
+  context 'errors' do
+    it 'fails if url is not a valid basecamp url' do
+      request = described_class.new(@client, :get, 'www.twitter.com', override_path: true)
+
+      expect { request.execute }.to raise_error(Camper::Error::InvalidURL)
+    end
+  end
+
   describe '.default_options' do
     it 'has default values' do
       default_options = described_class.default_options

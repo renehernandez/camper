@@ -63,6 +63,7 @@ module Camper
     def execute
       endpoint, params = prepare_request_data
 
+      raise Error::InvalidURL, endpoint unless UrlUtils.basecamp_url?(endpoint)
       raise Error::TooManyRetries, endpoint if maxed_attempts?
 
       @attempts += 1

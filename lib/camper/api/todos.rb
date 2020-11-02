@@ -22,18 +22,14 @@ module Camper
       # @example
       #   client.todos(todolist, completed: true)
       #
-      # @param todolist [Resource] the parent todoset resource
+      # @param todolist [Resource] the parent todolist resource
       # @param options [Hash] options to filter the list of todos
       # @return [Resource]
       # @raise [Error::InvalidParameter] if todos_url field in todolist param
       #   is not a valid basecamp url
       # @see https://github.com/basecamp/bc3-api/blob/master/sections/todos.md#get-to-dos
       def todos(todolist, options = {})
-        url = todolist.todos_url
-
-        raise Error::InvalidParameter, todolist unless UrlUtils.basecamp_url?(url)
-
-        get(url, query: options, override_path: true)
+        get(todolist.todos_url, query: options, override_path: true)
       end
 
       # Get a todo with a given id using a particular parent resource.
@@ -81,12 +77,9 @@ module Camper
       # @raise [Error::InvalidParameter] if content parameter is blank
       # @see https://github.com/basecamp/bc3-api/blob/master/sections/todos.md#create-a-to-do
       def create_todo(todolist, content, options = {})
-        url = todolist.todos_url
-
-        raise Error::InvalidParameter, todolist unless UrlUtils.basecamp_url?(url)
         raise Error::InvalidParameter, content if content.blank?
 
-        post(url, body: { content: content, **options }, override_path: true)
+        post(todolist.todos_url, body: { content: content, **options }, override_path: true)
       end
 
       # Update a todo.
@@ -110,14 +103,10 @@ module Camper
       #   is not a valid basecamp url
       # @see https://github.com/basecamp/bc3-api/blob/master/sections/todos.md#update-a-to-do
       def update_todo(todo, options)
-        url = todo.url
-
-        raise Error::InvalidParameter, url unless UrlUtils.basecamp_url?(url)
-
         body = {}.merge(options)
         PARAMETERS.each { |p| body[p.to_sym] = todo[p] unless key_is_present?(body, p) }
 
-        put(url, body: body, override_path: true)
+        put(todo.url, body: body, override_path: true)
       end
 
       # Complete a todo
@@ -130,11 +119,7 @@ module Camper
       #   is not a valid basecamp url
       # @see https://github.com/basecamp/bc3-api/blob/master/sections/todos.md#complete-a-to-do
       def complete_todo(todo)
-        url = todo.url
-
-        raise Error::InvalidParameter, todo unless UrlUtils.basecamp_url?(url)
-
-        post("#{url}/completion", override_path: true)
+        post("#{todo.url}/completion", override_path: true)
       end
 
       # Uncomplete a todo
@@ -147,11 +132,7 @@ module Camper
       #   is not a valid basecamp url
       # @see https://github.com/basecamp/bc3-api/blob/master/sections/todos.md#uncomplete-a-to-do
       def uncomplete_todo(todo)
-        url = todo.url
-
-        raise Error::InvalidParameter, todo unless UrlUtils.basecamp_url?(url)
-
-        delete("#{url}/completion", override_path: true)
+        delete("#{todo.url}/completion", override_path: true)
       end
 
       # Reposition a todo
@@ -166,12 +147,9 @@ module Camper
       # @raise [Error::InvalidParameter] if position param is less than 1
       # @see https://github.com/basecamp/bc3-api/blob/master/sections/todos.md#reposition-a-to-do
       def reposition_todo(todo, position)
-        url = todo.url
-        raise Error::InvalidParameter, todo unless UrlUtils.basecamp_url?(url)
-
         raise Error::InvalidParameter, position if position.to_i < 1
 
-        put("#{url}/position", position: position, override_path: true)
+        put("#{todo.url}/position", position: position, override_path: true)
       end
 
       # Trash a todo
@@ -185,8 +163,6 @@ module Camper
       #   is not a valid basecamp url
       # @see https://github.com/basecamp/bc3-api/blob/master/sections/recordings.md#trash-a-recording
       def trash_todo(todo)
-        raise Error::InvalidParameter, todo unless UrlUtils.basecamp_url?(todo.url)
-
         trash_recording(todo)
       end
 
