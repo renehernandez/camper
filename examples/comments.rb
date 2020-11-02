@@ -25,11 +25,22 @@ projects.auto_paginate do |p|
   # Adds a comment on the first todolist
   list = client.todolists(todoset).first
   puts "Todolist: #{list.title}, can be commented on: #{list.can_be_commented?}"
-  client.create_comment(list, 'New <b>comment</b> with <i>HTML support</i>')
+
+  puts 'Create a new comment'
+  new_comment = client.create_comment(list, 'New temporary comment')
   comments = client.comments(list)
   idx = 0
   comments.auto_paginate do |c|
     puts "Comment #{idx} content: #{c.content}"
     idx += 1
   end
+
+  puts 'Get single comment'
+  single_comment = client.comment(list, new_comment.id)
+
+  puts 'Update comment'
+  client.update_comment(single_comment, 'New content')
+
+  puts 'Delete comment'
+  client.trash_comment(single_comment)
 end
