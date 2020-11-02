@@ -31,7 +31,9 @@ The up-to-date list of Basecamp API endpoints can be found at [here](https://git
 Currently, Camper supports the following endpoints:
 
 * [Comments](https://github.com/basecamp/bc3-api/blob/master/sections/comments.md): Implementation at [comments.rb](https://github.com/renehernandez/camper/blob/main/lib/camper/api/comments.rb) (Complete)
-* [Messages](https://github.com/basecamp/bc3-api/blob/master/sections/messages.md): Implementation at [messages.rb](https://github.com/renehernandez/camper/blob/main/lib/camper/api/messages.rb) (Partial)
+* [Message Types](https://github.com/basecamp/bc3-api/blob/master/sections/message_types.md): Implementation at [messages.rb](https://github.com/renehernandez/camper/blob/main/lib/camper/api/message_types.rb) (Complete)
+* [Message Boards](https://github.com/basecamp/bc3-api/blob/master/sections/message_boards.md): Implementation at [message_boards.rb](https://github.com/renehernandez/camper/blob/main/lib/camper/api/message_boards.rb) (Complete)
+* [Messages](https://github.com/basecamp/bc3-api/blob/master/sections/messages.md): Implementation at [messages.rb](https://github.com/renehernandez/camper/blob/main/lib/camper/api/messages.rb) (Complete)
 * [People](https://github.com/basecamp/bc3-api/blob/master/sections/people.md): Implementation at [people.rb](https://github.com/renehernandez/camper/blob/main/lib/camper/api/people.rb) (Complete)
 * [Projects](https://github.com/basecamp/bc3-api/blob/master/sections/projects.md): Implementation at [projects.rb](https://github.com/renehernandez/camper/blob/main/lib/camper/api/projects.rb) (Complete)
 * [Recordings](https://github.com/basecamp/bc3-api/blob/master/sections/recordings.md): Implementation at [recordings.rb](https://github.com/renehernandez/camper/blob/main/lib/camper/api/recordings.rb) (Complete)

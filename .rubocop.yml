@@ -25,6 +25,12 @@ Metrics/AbcSize:
 Style/Documentation:
   Enabled: false
 
+Style/AsciiComments:
+  Enabled: false
+
+Style/ParallelAssignment:
+  Enabled: false
+
 Style/ClassAndModuleChildren:
   Exclude:
     - 'lib/camper/*'

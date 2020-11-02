@@ -14,6 +14,8 @@ module Camper
     include Authorization
     include CommentsAPI
     include Logging
+    include MessageBoardsAPI
+    include MessageTypesAPI
     include MessagesAPI
     include PeopleAPI
     include ProjectsAPI
